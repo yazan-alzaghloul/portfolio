@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yazan Alzaghloul — Software Engineer & Mobile Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   CSS VARIABLES & RESET
+============================================================ */
+:root {
+  --indigo: #4f46e5;
+  --indigo-light: #6366f1;
+  --pink: #ec4899;
+  --cyan: #06b6d4;
+  --amber: #f59e0b;
+  --bg: #050510;
+  --bg2: #0a0a1a;
+  --bg3: #0f0f22;
+  --card: rgba(255,255,255,0.04);
+  --card-border: rgba(255,255,255,0.08);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #475569;
+  --glow-indigo: 0 0 40px rgba(99,102,241,0.4);
+  --glow-pink: 0 0 40px rgba(236,72,153,0.4);
+  --glow-cyan: 0 0 40px rgba(6,182,212,0.4);
+  --glow-amber: 0 0 40px rgba(245,158,11,0.4);
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--indigo), var(--pink)); border-radius: 3px; }
+
+/* ============================================================
+   CUSTOM CURSOR
+============================================================ */
+#cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s;
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(99,102,241,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+body:hover #cursor-dot { background: var(--pink); box-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink); }
+
+/* ============================================================
+   LOADER
+============================================================ */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 99990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#loader.hide { opacity: 0; visibility: hidden; }
+.loader-initials {
+  font-family: var(--font-head);
+  font-size: clamp(60px, 10vw, 100px);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--indigo), var(--pink), var(--cyan), var(--amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%;
+  animation: gradShift 2s ease infinite;
+}
+.loader-bar-wrap {
+  width: 200px; height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--indigo), var(--pink), var(--cyan), var(--amber));
+  background-size: 300%;
+  animation: loadProgress 2s ease forwards, gradShift 1s linear infinite;
+  width: 0%;
+}
+@keyframes loadProgress { to { width: 100%; } }
+
+/* ============================================================
+   PARTICLE CANVAS
+============================================================ */
+#particle-canvas {
+  position: fixed; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(20px,5vw,80px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(5,5,16,0.7);
+  border-bottom: 1px solid var(--card-border);
+  transform: translateY(-100%);
+  animation: slideDown 0.8s 2.2s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes slideDown { to { transform: translateY(0); } }
+.nav-logo {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--indigo-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+  letter-spacing: 0.02em;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute; bottom:-4px; left:0; right:0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--indigo), var(--pink));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  border-radius: 1px;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:none; }
+.nav-hamburger span { display:block; width:24px; height:2px; background:var(--text); border-radius:1px; transition:0.3s; }
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px clamp(20px,5vw,80px) 60px;
+  z-index: 1;
+}
+.hero-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-left { animation: fadeUp 0.9s 2.5s both; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+.hero-badge::before {
+  content:'';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-name {
+  font-family: var(--font-head);
+  font-size: clamp(44px,6vw,88px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #fff 0%, var(--indigo-light) 30%, var(--pink) 60%, var(--cyan) 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+  margin-bottom: 16px;
+}
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-title {
+  font-size: clamp(16px,2vw,22px);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 32px;
+  letter-spacing: 0.01em;
+}
+.hero-title span {
+  color: var(--cyan);
+  font-weight: 600;
+}
+.hero-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  cursor: none;
+  letter-spacing: 0.02em;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--indigo), var(--pink));
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,0.5); }
+.btn-outline {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+}
+.btn-outline:hover { transform: translateY(-2px); border-color: var(--indigo); box-shadow: var(--glow-indigo); }
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeUp 0.9s 2.8s both;
+}
+.hero-card-wrap {
+  position: relative;
+  width: 320px; height: 380px;
+}
+.hero-orb {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+  filter: blur(30px);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+@keyframes orbFloat { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-55%) scale(1.08)} }
+.hero-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 300px; height: 300px;
+  transform: translate(-50%, -50%);
+  border: 2px dashed rgba(99,102,241,0.3);
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+}
+@keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+.hero-card {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotateY(0deg) rotateX(5deg);
+  width: 220px;
+  background: rgba(15,15,34,0.9);
+  border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 20px;
+  padding: 30px 24px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), var(--glow-indigo);
+  animation: cardFloat 6s ease-in-out infinite;
+}
+@keyframes cardFloat {
+  0%,100%{transform:translate(-50%,-50%) rotateY(-5deg) rotateX(5deg)}
+  50%{transform:translate(-50%,-55%) rotateY(5deg) rotateX(-5deg)}
+}
+.card-avatar {
+  width: 70px; height: 70px;
+  background: linear-gradient(135deg, var(--indigo), var(--pink));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head);
+  font-size: 26px; font-weight: 800;
+  color: #fff;
+  margin: 0 auto 16px;
+  box-shadow: 0 0 30px rgba(99,102,241,0.5);
+}
+.card-name {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.card-role {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.card-stats {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card-stat {
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  flex: 1; min-width: 56px;
+}
+.card-stat-num {
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--cyan), var(--indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.card-stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   SECTION COMMON
+============================================================ */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px clamp(20px,5vw,80px);
+}
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+.section-label::before {
+  content:'';
+  width: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--pink), var(--indigo));
+  border-radius: 1px;
+}
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(32px,4vw,52px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.section-title span {
+  background: linear-gradient(135deg, var(--indigo-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-bottom: 60px;
+  line-height: 1.8;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal { opacity:0; transform:translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.left { transform: translateX(-40px); }
+.reveal.right { transform: translateX(40px); }
+.reveal.visible { opacity:1; transform:none; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
+@keyframes gradShift {
+  0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+}
+
+/* ============================================================
+   MARQUEE
+============================================================ */
+.marquee-wrap {
+  overflow: hidden;
+  background: var(--bg2);
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  padding: 14px 0;
+  position: relative; z-index: 1;
+  margin: 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 40px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.marquee-item::after {
+  content: '✦';
+  font-size: 10px;
+  color: var(--indigo);
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ============================================================
+   SKILLS
+============================================================ */
+#skills { background: var(--bg2); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  margin-bottom: 60px;
+}
+.skill-item { }
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.skill-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.skill-pct {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-head);
+}
+.skill-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+  position: relative;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmerBar 2s 1.5s ease;
+}
+@keyframes shimmerBar { 0%{left:-100%} 100%{left:200%} }
+.chip-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.chip:hover {
+  transform: translateY(-4px);
+  color: var(--text);
+  border-color: var(--indigo);
+  box-shadow: var(--glow-indigo);
+}
+
+/* ============================================================
+   EXPERIENCE
+============================================================ */
+#experience { background: var(--bg); }
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content:'';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--indigo), var(--pink), var(--cyan), var(--amber));
+  border-radius: 2px;
+  animation: gradShift 4s ease infinite;
+  background-size: 100% 400%;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+.timeline-dot {
+  position: absolute;
+  left: -38px; top: 24px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--pink));
+  box-shadow: 0 0 16px rgba(99,102,241,0.6);
+  border: 2px solid var(--bg);
+}
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  cursor: default;
+}
+.job-card:hover {
+  transform: translateX(8px);
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: var(--glow-indigo);
+}
+.job-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.job-title {
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.job-dates {
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--indigo-light);
+  white-space: nowrap;
+}
+.job-company {
+  font-size: 14px;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.job-location {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.job-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.job-desc li { margin-left: 16px; margin-bottom: 4px; }
+.job-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 16px;
+}
+.job-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+.chip-indigo { background:rgba(99,102,241,0.15); color:var(--indigo-light); border:1px solid rgba(99,102,241,0.2); }
+.chip-pink { background:rgba(236,72,153,0.15); color:var(--pink); border:1px solid rgba(236,72,153,0.2); }
+.chip-cyan { background:rgba(6,182,212,0.15); color:var(--cyan); border:1px solid rgba(6,182,212,0.2); }
+.chip-amber { background:rgba(245,158,11,0.15); color:var(--amber); border:1px solid rgba(245,158,11,0.2); }
+
+/* ============================================================
+   PROJECTS
+============================================================ */
+#projects { background: var(--bg2); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.project-card::before {
+  content:'';
+  position: absolute;
+  top: 0; left: -100%; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--indigo), var(--pink), var(--cyan), transparent);
+  transition: left 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.project-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.4), var(--glow-indigo); border-color: rgba(99,102,241,0.3); }
+.project-card:hover::before { left: 0; }
+.project-emoji { font-size: 36px; margin-bottom: 16px; display: block; }
+.project-name {
+  font-family: var(--font-head);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.project-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.project-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.15);
+  color: var(--indigo-light);
+}
+
+/* ============================================================
+   EDUCATION & LANGUAGES
+============================================================ */
+#education { background: var(--bg); }
+.edu-lang-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.edu-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, var(--indigo), var(--cyan));
+}
+.edu-degree {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.edu-school {
+  font-size: 14px;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.edu-year {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+.lang-badges { display: flex; flex-direction: column; gap: 16px; }
+.lang-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: all 0.3s;
+}
+.lang-badge:hover { border-color: var(--pink); box-shadow: var(--glow-pink); }
+.lang-flag { font-size: 28px; }
+.lang-info { flex: 1; }
+.lang-name { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--text); }
+.lang-level { font-size: 13px; color: var(--text-muted); }
+.lang-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.lang-native { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+.lang-pro { background: rgba(6,182,212,0.15); color: var(--cyan); border: 1px solid rgba(6,182,212,0.3); }
+
+/* Awards */
+.awards-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+.award-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: 0.3s;
+}
+.award-item:hover { border-color: var(--amber); box-shadow: var(--glow-amber); }
+.award-icon { font-size: 22px; }
+.award-text { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+.award-text strong { color: var(--text); font-weight: 600; }
+
+/* ============================================================
+   CONTACT
+============================================================ */
+#contact { background: var(--bg2); }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.contact-cards { display: flex; flex-direction: column; gap: 16px; }
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.contact-card:hover { transform: translateX(8px); border-color: var(--indigo); box-shadow: var(--glow-indigo); }
+.contact-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.ci-email { background: rgba(99,102,241,0.15); }
+.ci-phone { background: rgba(6,182,212,0.15); }
+.ci-location { background: rgba(236,72,153,0.15); }
+.ci-avail { background: rgba(16,185,129,0.15); }
+.contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+.contact-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+.contact-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ripple-wrap {
+  position: relative;
+  width: 200px; height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid;
+  animation: rippleOut 3s ease-out infinite;
+  opacity: 0;
+}
+.ripple:nth-child(1) { width:200px;height:200px;border-color:rgba(99,102,241,0.4); animation-delay:0s; }
+.ripple:nth-child(2) { width:160px;height:160px;border-color:rgba(236,72,153,0.4); animation-delay:1s; }
+.ripple:nth-child(3) { width:120px;height:120px;border-color:rgba(6,182,212,0.4); animation-delay:2s; }
+@keyframes rippleOut {
+  0%{ opacity:0.7; transform:scale(0.5); }
+  100%{ opacity:0; transform:scale(1.2); }
+}
+.contact-avatar {
+  position: relative; z-index: 1;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--pink));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head);
+  font-size: 32px; font-weight: 800;
+  color: #fff;
+  box-shadow: 0 0 40px rgba(99,102,241,0.5);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+footer span { color: var(--pink); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .edu-lang-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .contact-right { display: none; }
+}
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  section { padding: 70px 20px; }
+  .timeline { padding-left: 24px; }
+  .timeline-dot { left: -30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-initials">YA</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Yazan.dev</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Available for Senior / Lead Roles</div>
+      <h1 class="hero-name">Yazan<br/>Alzaghloul</h1>
+      <p class="hero-title">Software Engineer &amp; <span>Mobile Architect</span></p>
+      <p class="hero-desc">9+ years delivering scalable, secure mobile platforms across fintech, telecom, and technology — specializing in Flutter, Android (Java/Kotlin), and digital transformation.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get In Touch ↗</a>
+        <a href="#experience" class="btn btn-outline">View Experience</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-wrap">
+        <div class="hero-orb"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-card">
+          <div class="card-avatar">YA</div>
+          <div class="card-name">Yazan Alzaghloul</div>
+          <div class="card-role">Mobile Architect</div>
+          <div class="card-stats">
+            <div class="card-stat">
+              <span class="card-stat-num">9+</span>
+              <span class="card-stat-label">Years</span>
+            </div>
+            <div class="card-stat">
+              <span class="card-stat-num">5+</span>
+              <span class="card-stat-label">Companies</span>
+            </div>
+            <div class="card-stat">
+              <span class="card-stat-num">10+</span>
+              <span class="card-stat-label">Apps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label reveal">Technical Mastery</div>
+    <h2 class="section-title reveal">Skills &amp; <span>Technologies</span></h2>
+    <p class="section-sub reveal">Proficiency across mobile, backend, cloud, and architecture — honed over nearly a decade of real-world delivery.</p>
+
+    <div class="skills-grid" id="skillsGrid"></div>
+
+    <div class="section-label reveal" style="margin-bottom:20px">Tech Stack</div>
+    <div class="chip-cloud reveal" id="chipCloud"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label reveal">Career Journey</div>
+    <h2 class="section-title reveal">Work <span>Experience</span></h2>
+    <p class="section-sub reveal">From telecom in Damascus to fintech in Abu Dhabi — building mission-critical mobile products across the region and beyond.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Key <span>Projects</span></h2>
+    <p class="section-sub reveal">Highlights from apps serving millions of users across banking, culture, social networking, and more.</p>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- EDUCATION & LANGUAGES -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label reveal">Background</div>
+    <h2 class="section-title reveal">Education &amp; <span>Languages</span></h2>
+    <div class="edu-lang-grid">
+      <div class="reveal left">
+        <div class="edu-card">
+          <div class="edu-degree">Bachelor of Software Engineering</div>
+          <div class="edu-school">Faculty of Information Technology, Damascus University</div>
+          <div class="edu-year">2012 – 2018 · Damascus, Syria</div>
+        </div>
+        <div class="awards-list" id="awardsList"></div>
+      </div>
+      <div class="reveal right">
+        <div class="section-label" style="margin-bottom:16px">Languages</div>
+        <div class="lang-badges">
+          <div class="lang-badge">
+            <span class="lang-flag">🇸🇦</span>
+            <div class="lang-info">
+              <div class="lang-name">Arabic</div>
+              <div class="lang-level">Mother tongue</div>
+            </div>
+            <span class="lang-pill lang-native">Native</span>
+          </div>
+          <div class="lang-badge">
+            <span class="lang-flag">🇬🇧</span>
+            <div class="lang-info">
+              <div class="lang-name">English</div>
+              <div class="lang-level">Professional working proficiency</div>
+            </div>
+            <span class="lang-pill lang-pro">Professional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Let's Connect</div>
+    <h2 class="section-title reveal">Get In <span>Touch</span></h2>
+    <p class="section-sub reveal">Open to senior engineering and mobile architecture roles across the UAE and beyond.</p>
+    <div class="contact-inner">
+      <div class="contact-cards reveal left">
+        <a href="mailto:yazan.alzaghloul@gmail.com" class="contact-card">
+          <div class="contact-icon ci-email">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">yazan.alzaghloul@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+971521206549" class="contact-card">
+          <div class="contact-icon ci-phone">📱</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+971 521 206 549</div>
+          </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon ci-location">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Abu Dhabi, UAE</div>
+          </div>
+        </div>
+        <a href="https://linkedin.com/in/yazan-alzaghloul" target="_blank" class="contact-card">
+          <div class="contact-icon ci-avail">🔗</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/yazan-alzaghloul</div>
+          </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon ci-avail">🚗</div>
+          <div>
+            <div class="contact-label">Driving License</div>
+            <div class="contact-value">Valid UAE License — Category B</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right reveal right">
+        <div class="ripple-wrap">
+          <div class="ripple"></div>
+          <div class="ripple"></div>
+          <div class="ripple"></div>
+          <div class="contact-avatar">YA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted with <span>♥</span> · Yazan Alzaghloul © 2025 · Abu Dhabi, UAE</p>
+</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const SKILLS = [
+  { name: 'Flutter / Dart', pct: 95, color: 'linear-gradient(90deg,#4f46e5,#06b6d4)' },
+  { name: 'Android (Java / Kotlin)', pct: 92, color: 'linear-gradient(90deg,#ec4899,#f59e0b)' },
+  { name: 'Clean Architecture / MVVM', pct: 90, color: 'linear-gradient(90deg,#06b6d4,#4f46e5)' },
+  { name: 'CI/CD & Azure DevOps', pct: 82, color: 'linear-gradient(90deg,#f59e0b,#ec4899)' },
+  { name: 'Agile / Scrum Leadership', pct: 88, color: 'linear-gradient(90deg,#4f46e5,#ec4899)' },
+  { name: 'Firebase & Analytics', pct: 85, color: 'linear-gradient(90deg,#ec4899,#06b6d4)' },
+  { name: 'MySQL / SQL Server', pct: 78, color: 'linear-gradient(90deg,#06b6d4,#f59e0b)' },
+  { name: 'iOS Development (Basic)', pct: 45, color: 'linear-gradient(90deg,#f59e0b,#4f46e5)' },
+];
+
+const CHIPS = [
+  'Flutter','Dart','Kotlin','Java','Android','iOS','Firebase','CleverTap',
+  'Google Analytics','Azure DevOps','Git','Jira','Clean Architecture','MVC',
+  'MVP','MVVM','Scrum','Espresso','SonarCloud','MySQL','SQL Server',
+  'XMPP','SIP','Smack','Kamailio','Linphone','Apple Wallet','Aani / NPSS',
+  'UAE PASS','Payment Gateways','CI/CD',
+];
+
+const EXPERIENCE = [
+  {
+    title: 'Assistant Manager – Digital Application Delivery',
+    company: 'Finance House',
+    location: 'Abu Dhabi, UAE',
+    dates: 'Dec 2024 – Present',
+    desc: [
+      'Lead digital delivery across multiple product streams — on time, within scope, and aligned with organizational priorities.',
+      'Translate business requirements into actionable delivery plans with Product Owners, BAs, and Technology teams.',
+      'Leverage AI to optimize delivery operations, improve quality, and accelerate digital product execution.',
+    ],
+    chips: [{ label:'Current', cls:'chip-cyan' }, { label:'Leadership', cls:'chip-indigo' }, { label:'AI-Ops', cls:'chip-pink' }],
+  },
+  {
+    title: 'Mobile Team Leader',
+    company: 'Finance House',
+    location: 'Abu Dhabi, UAE',
+    dates: 'Sep 2022 – Dec 2024',
+    desc: [
+      'Led development of FH Personal & FH Business apps — performance, scalability, and security at the forefront.',
+      'Supervised and mentored mobile developers, boosting team standards and delivery velocity.',
+      'Integrated UAE PASS, CleverTap, Apple Wallet provisioning, and Aani Instant Payment (NPSS) into mobile platforms.',
+    ],
+    chips: [{ label:'Flutter', cls:'chip-indigo' }, { label:'Android', cls:'chip-cyan' }, { label:'UAE PASS', cls:'chip-pink' }, { label:'Aani / NPSS', cls:'chip-amber' }],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'DA Studio',
+    location: 'Dubai, UAE',
+    dates: 'Dec 2021 – Sep 2022',
+    desc: [
+      'Delivered Abu Dhabi Art app for the Ministry of Culture and Tourism — end-to-end from requirements to launch.',
+      'Worked on Art Dubai mobile application for the Middle East\'s leading international art fair.',
+      'Built new features for a large-scale social/chat application serving users in France.',
+    ],
+    chips: [{ label:'Flutter', cls:'chip-indigo' }, { label:'Cultural Apps', cls:'chip-amber' }, { label:'Social/Chat', cls:'chip-pink' }],
+  },
+  {
+    title: 'Flutter Developer',
+    company: 'Digital Wink',
+    location: 'Mersin, Turkey',
+    dates: 'Dec 2020 – Sep 2022',
+    desc: [
+      'Developed multiple cross-platform apps using Flutter with clean architecture and efficient state management.',
+      'Integrated payment gateways (Visa, MasterCard, Mada) and improved map-based routing algorithms.',
+    ],
+    chips: [{ label:'Flutter', cls:'chip-indigo' }, { label:'Payments', cls:'chip-cyan' }, { label:'Cross-Platform', cls:'chip-pink' }],
+  },
+  {
+    title: 'Android Developer',
+    company: 'Medicus AI',
+    location: 'Vienna, Austria',
+    dates: 'Nov 2019 – Nov 2020',
+    desc: [
+      'Designed and developed new healthcare app modules in partnership with Roche and Central Health.',
+      'Eliminated memory leaks (100% reduction) and optimized app reliability and UX.',
+    ],
+    chips: [{ label:'Android', cls:'chip-cyan' }, { label:'Healthcare', cls:'chip-pink' }, { label:'Roche', cls:'chip-amber' }],
+  },
+  {
+    title: 'Mobile Application Developer',
+    company: 'Syriatel Mobile Telecom',
+    location: 'Damascus, Syria',
+    dates: 'Sep 2016 – Oct 2019',
+    desc: [
+      'Developed Syria\'s first social and chat applications with voice and video calling capabilities.',
+      'Led a small engineering team to deliver enhanced versions of enterprise mobile apps.',
+    ],
+    chips: [{ label:'Android', cls:'chip-indigo' }, { label:'XMPP', cls:'chip-cyan' }, { label:'VoIP / SIP', cls:'chip-pink' }, { label:'Team Lead', cls:'chip-amber' }],
+  },
+];
+
+const PROJECTS = [
+  {
+    emoji: '🏦',
+    name: 'FH Personal & FH Business Apps',
+    desc: 'Digital banking applications for Finance House covering card management, instant payments, and secure financial transactions.',
+    tags: ['Flutter', 'Digital Banking', 'UAE PASS', 'Apple Wallet', 'Aani'],
+  },
+  {
+    emoji: '📈',
+    name: 'InvestNation App',
+    desc: 'Retail investment platform with diverse portfolio options, enabling users to manage and grow their investments from mobile.',
+    tags: ['Flutter', 'FinTech', 'Investment', 'Clean Arch'],
+  },
+  {
+    emoji: '🎨',
+    name: 'Abu Dhabi Art App',
+    desc: 'Official mobile application for Abu Dhabi\'s premier cultural event by the Ministry of Culture and Tourism. High engagement design.',
+    tags: ['Flutter', 'Cultural', 'UAE Gov', 'Ministry'],
+  },
+  {
+    emoji: '🖼️',
+    name: 'Art Dubai App',
+    desc: 'The Middle East\'s leading international art fair mobile application, connecting global audiences with curated contemporary art.',
+    tags: ['Flutter', 'Art Fair', 'Dubai', 'Cultural'],
+  },
+  {
+    emoji: '👕',
+    name: 'WashCloud App',
+    desc: 'AI-driven laundry platform with smart delivery tracking, real-time order management, and seamless route optimization.',
+    tags: ['Flutter', 'AI', 'Maps', 'Logistics'],
+  },
+  {
+    emoji: '💬',
+    name: 'Link App',
+    desc: 'Syria\'s first chat application featuring end-to-end encrypted messaging and HD video calling built on XMPP and SIP protocols.',
+    tags: ['Android', 'XMPP', 'SIP', 'VoIP', 'Encryption'],
+  },
+];
+
+const AWARDS = [
+  { icon:'🏆', text:'<strong>Certificate of Recognition – Finance House (2024)</strong> — Contribution to Oracle Cloud Infrastructure migration.' },
+  { icon:'🎖️', text:'<strong>Certificate of Appreciation – Finance House (2023)</strong> — Outstanding performance in digital delivery.' },
+  { icon:'🚀', text:'<strong>NPSS Project Completion Award – Finance House (2023)</strong> — National Payment Systems Strategy delivery.' },
+];
+
+const MARQUEE_ITEMS = [
+  'Finance House','Medicus AI','DA Studio','Digital Wink','Syriatel',
+  'Abu Dhabi Ministry of Culture','Art Dubai','Roche','NPSS / Aani',
+  'Apple Wallet','UAE PASS','CleverTap','Oracle Cloud',
+];
+
+// ============================================================
+// RENDER DATA
+// ============================================================
+function renderSkills() {
+  const grid = document.getElementById('skillsGrid');
+  SKILLS.forEach(s => {
+    grid.innerHTML += `
+      <div class="skill-item reveal">
+        <div class="skill-header">
+          <span class="skill-name">${s.name}</span>
+          <span class="skill-pct">${s.pct}%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-pct="${s.pct}" style="background:${s.color}"></div>
+        </div>
+      </div>`;
+  });
+}
+
+function renderChips() {
+  const cloud = document.getElementById('chipCloud');
+  CHIPS.forEach(c => {
+    cloud.innerHTML += `<span class="chip">${c}</span>`;
+  });
+}
+
+function renderTimeline() {
+  const tl = document.getElementById('timeline');
+  EXPERIENCE.forEach(j => {
+    const chips = j.chips.map(c => `<span class="job-chip ${c.cls}">${c.label}</span>`).join('');
+    const desc = j.desc.map(d => `<li>${d}</li>`).join('');
+    tl.innerHTML += `
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="job-card">
+          <div class="job-top">
+            <span class="job-title">${j.title}</span>
+            <span class="job-dates">${j.dates}</span>
+          </div>
+          <div class="job-company">${j.company}</div>
+          <div class="job-location">📍 ${j.location}</div>
+          <ul class="job-desc">${desc}</ul>
+          <div class="job-chips">${chips}</div>
+        </div>
+      </div>`;
+  });
+}
+
+function renderProjects() {
+  const grid = document.getElementById('projectsGrid');
+  PROJECTS.forEach(p => {
+    const tags = p.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+    grid.innerHTML += `
+      <div class="project-card reveal">
+        <span class="project-emoji">${p.emoji}</span>
+        <div class="project-name">${p.name}</div>
+        <div class="project-desc">${p.desc}</div>
+        <div class="project-tags">${tags}</div>
+      </div>`;
+  });
+}
+
+function renderAwards() {
+  const list = document.getElementById('awardsList');
+  AWARDS.forEach(a => {
+    list.innerHTML += `
+      <div class="award-item">
+        <span class="award-icon">${a.icon}</span>
+        <div class="award-text">${a.text}</div>
+      </div>`;
+  });
+}
+
+function renderMarquee() {
+  const track = document.getElementById('marqueeTrack');
+  const all = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  track.innerHTML = all.map(item => `<span class="marquee-item">${item}</span>`).join('');
+}
+
+// ============================================================
+// LOADER
+// ============================================================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+  }, 2200);
+});
+
+// ============================================================
+// CURSOR
+// ============================================================
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  dot.style.left = mx + 'px';
+  dot.style.top = my + 'px';
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a, button, .btn, .job-card, .project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(236,72,153,0.8)'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(99,102,241,0.6)'; });
+});
+
+// ============================================================
+// PARTICLES
+// ============================================================
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+const COLORS = ['#4f46e5','#ec4899','#06b6d4','#f59e0b'];
+let particles = [];
+
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+function Particle() {
+  this.x = Math.random() * canvas.width;
+  this.y = Math.random() * canvas.height;
+  this.vx = (Math.random() - 0.5) * 0.6;
+  this.vy = (Math.random() - 0.5) * 0.6;
+  this.r = Math.random() * 2 + 1;
+  this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  this.alpha = Math.random() * 0.5 + 0.2;
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.alpha;
+    ctx.fill();
+  });
+  particles.forEach((a, i) => {
+    for (let j = i + 1; j < particles.length; j++) {
+      const b = particles[j];
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      if (dist < 130) {
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.globalAlpha = (1 - dist / 130) * 0.18;
+        ctx.strokeStyle = a.color;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+  });
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Skill bars
+      const fill = e.target.querySelector('.skill-bar-fill');
+      if (fill) fill.style.width = fill.dataset.pct + '%';
+    }
+  });
+}, { threshold: 0.15 });
+
+// Also observe skill bar items inside skills grid directly
+const skillObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const fill = e.target.querySelector('.skill-bar-fill');
+      if (fill) {
+        setTimeout(() => { fill.style.width = fill.dataset.pct + '%'; }, 200);
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+function attachObservers() {
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.skill-item').forEach(el => skillObs.observe(el));
+}
+
+// ============================================================
+// STAGGER REVEAL DELAYS
+// ============================================================
+function applyStagger() {
+  document.querySelectorAll('.skills-grid .skill-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+  });
+  document.querySelectorAll('.projects-grid .project-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+  document.querySelectorAll('.timeline-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.12) + 's';
+  });
+}
+
+// ============================================================
+// HAMBURGER
+// ============================================================
+function toggleMenu(el) {
+  el.classList.toggle('open');
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;right:0;left:0;background:rgba(5,5,16,0.97);padding:20px;gap:20px;border-bottom:1px solid rgba(255,255,255,0.08);z-index:999;backdrop-filter:blur(20px)';
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderSkills();
+renderChips();
+renderTimeline();
+renderProjects();
+renderAwards();
+renderMarquee();
+applyStagger();
+attachObservers();
+</script>
+</body>
+</html>
