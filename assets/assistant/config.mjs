@@ -1,6 +1,6 @@
 // Public configuration only. API credentials belong in the Worker secret store.
 export const config = Object.freeze({
-  endpoint: '', // e.g. https://yazan-ai.YOUR-SUBDOMAIN.workers.dev/chat
+  endpoint: 'https://yazan-ai.yazan-alzaghloul.workers.dev/chat',
   timeoutMs: 18000,
   maxInput: 1000,
   maxHistory: 40,

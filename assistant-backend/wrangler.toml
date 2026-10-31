@@ -4,9 +4,9 @@ compatibility_date = "2026-10-30"
 workers_dev = true
 
 [vars]
-ALLOWED_ORIGINS = "https://yazan-alzaghloul.github.io"
+ALLOWED_ORIGINS = "https://yazan-alzaghloul.github.io,http://localhost:4173"
 # Set to a Responses API model available in your OpenAI project before deployment.
-OPENAI_MODEL = ""
+OPENAI_MODEL = "gpt-6-luna"
 
 [[ratelimits]]
 name = "CHAT_RATE_LIMITER"
