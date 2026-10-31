@@ -56,6 +56,57 @@ export function mountAssistant() {
   let history = [], pending = false, generation = 0, request = null, welcomeTimer = null, closingTimer = null;
   if (config.endpoint) $('#yai-privacy').textContent = 'AI replies send recent messages to OpenAI. Avoid personal details.';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const nudgeKey = 'yazan-ai-welcome-seen-v1';
+  let nudge = null, nudgeTimer = null, typingTimer = null, nudgeRemovalTimer = null;
+
+  function dismissNudge() {
+    clearTimeout(nudgeTimer);
+    clearTimeout(typingTimer);
+    if (!nudge || nudge.inert) return;
+    if (nudge.contains(document.activeElement)) launcher.focus({ preventScroll: true });
+    nudge.inert = true;
+    nudge.dataset.leaving = '';
+    const dismissed = nudge;
+    nudgeRemovalTimer = setTimeout(() => { dismissed.remove(); nudge = null; }, motion.matches ? 125 : 200);
+  }
+
+  function showNudge() {
+    try { if (sessionStorage.getItem(nudgeKey)) return; } catch { /* Storage may be disabled. */ }
+    const message = "👋 Hi, I'm Yazan Alzaghloul's AI assistant. Click here and ask me anything!";
+    nudge = el('div', 'yai-welcome');
+    const trigger = el('button', 'yai-welcome-trigger');
+    trigger.type = 'button';
+    trigger.setAttribute('aria-label', message);
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    trigger.setAttribute('aria-controls', dialog.id);
+    const copy = el('span', 'yai-welcome-copy');
+    copy.setAttribute('aria-hidden', 'true');
+    // Reserve the full message's space so typing never shifts the bubble.
+    const size = el('span', 'yai-welcome-size', message);
+    const text = el('span', 'yai-welcome-text', motion.matches ? message : '');
+    copy.append(size, text);
+    trigger.append(copy);
+    trigger.addEventListener('click', open);
+    const dismiss = el('button', 'yai-welcome-close', '×');
+    dismiss.type = 'button';
+    dismiss.setAttribute('aria-label', 'Dismiss welcome message');
+    dismiss.addEventListener('click', dismissNudge);
+    nudge.append(trigger, dismiss);
+    document.body.append(nudge);
+    try { sessionStorage.setItem(nudgeKey, '1'); } catch { /* Remain usable without storage. */ }
+    if (!motion.matches) {
+      const characters = Array.from(message);
+      let count = 0;
+      function type() {
+        if (!nudge || nudge.inert) return;
+        if (motion.matches) { text.textContent = message; return; }
+        text.textContent = characters.slice(0, ++count).join('');
+        if (count < characters.length) typingTimer = setTimeout(type, 22);
+      }
+      typingTimer = setTimeout(type, 200);
+    }
+    nudgeTimer = setTimeout(dismissNudge, 8000);
+  }
   const setMode = value => { mode.textContent = value === 'ai' ? 'Powered by AI · CV grounded' : 'Portfolio guide · Local answers'; };
   setMode('local');
 
@@ -146,6 +197,7 @@ export function mountAssistant() {
     }, motion.matches ? 100 : 650);
   }
   function open() {
+    dismissNudge();
     clearTimeout(closingTimer);
     launcher.setAttribute('aria-expanded', 'true');
     launcher.dataset.active = '';
@@ -214,9 +266,14 @@ export function mountAssistant() {
   input.addEventListener('input', () => { send.disabled = pending || !input.value.trim(); });
   // Enter uses native form submission; IME composition must complete first.
   input.addEventListener('keydown', event => { if (event.key === 'Enter' && event.isComposing) event.preventDefault(); });
-  window.addEventListener('pagehide', () => { request?.abort(); persist(); });
+  window.addEventListener('pagehide', () => {
+    request?.abort(); persist();
+    clearTimeout(nudgeTimer); clearTimeout(typingTimer); clearTimeout(nudgeRemovalTimer);
+    nudge?.remove(); nudge = null;
+  });
   restore(); history.forEach(showMessage); renderChips();
   const lastAnswer = [...history].reverse().find(m => m.role === 'assistant' && !m.welcome);
   if (lastAnswer) setMode(lastAnswer.mode);
+  showNudge();
 }
 mountAssistant();

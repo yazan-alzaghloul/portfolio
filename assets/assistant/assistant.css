@@ -13,6 +13,43 @@
 .yai-launcher[data-active] { opacity: 0; visibility: hidden; }
 .yai-tooltip { position: absolute; right: 76px; width: max-content; max-width: 220px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-bg); color: var(--white); font-size: 12px; pointer-events: none; opacity: 0; transform: translateX(4px); transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out); }
 .yai-launcher:focus-visible .yai-tooltip { opacity: 1; transform: none; }
+.yai-welcome, .yai-welcome * { box-sizing: border-box; cursor: auto; }
+.yai-welcome {
+  position: fixed; z-index: 10001;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: calc(max(24px, env(safe-area-inset-bottom)) + 78px);
+  width: 310px; max-width: calc(100vw - 48px);
+  border: 1px solid color-mix(in srgb, var(--cyan) 32%, var(--line)); border-radius: 20px 20px 8px 20px;
+  background: var(--panel-bg); color: var(--text-strong);
+  box-shadow: 0 12px 36px rgba(0,0,0,.16), 0 0 18px rgba(46,155,255,.1);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  font: 400 14px/1.65 'DM Sans', sans-serif;
+  opacity: 1; transform: none; transform-origin: bottom right;
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.yai-welcome::after {
+  content: ''; position: absolute; right: 24px; bottom: -6px; width: 10px; height: 10px;
+  background: var(--panel-bg); border-right: 1px solid color-mix(in srgb, var(--cyan) 32%, var(--line));
+  border-bottom: 1px solid color-mix(in srgb, var(--cyan) 32%, var(--line)); transform: rotate(45deg); pointer-events: none;
+}
+.yai-welcome[data-leaving] { opacity: 0; transform: translateY(8px); pointer-events: none; }
+@starting-style { .yai-welcome { opacity: 0; transform: translateY(8px); } }
+.yai-welcome-trigger {
+  display: block; width: 100%; padding: 20px 44px 20px 20px; border: 0; border-radius: inherit;
+  background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.yai-welcome-copy { display: grid; pointer-events: none; }
+.yai-welcome-size, .yai-welcome-text { grid-area: 1 / 1; overflow-wrap: anywhere; }
+.yai-welcome-size { visibility: hidden; }
+.yai-welcome-close {
+  position: absolute; top: 7px; right: 7px; display: grid; place-items: center; width: 32px; height: 32px;
+  padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted);
+  font: 400 22px/1 'DM Sans', sans-serif; cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, transform 160ms var(--ease-out);
+}
+.yai-welcome-close:active { transform: scale(.96); }
+.yai-welcome button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+body:has(.yai-welcome:not([data-leaving])) .yai-tooltip { display: none; }
 .yai-dialog {
   position: fixed; inset: auto max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) auto;
   width: 420px; max-width: calc(100vw - 32px); height: min(690px, calc(100dvh - 110px)); max-height: calc(100dvh - 32px);
@@ -79,6 +116,7 @@ body:has(.yai-dialog[open]) { overflow: hidden; }
 /* Keep the footer's return link clear of the launcher. */
 .footer-inner { padding-right: 84px; }
 @media (hover: hover) and (pointer: fine) {
+  .yai-welcome-close:hover { color: var(--white); background: var(--soft-fill-hover); }
   .yai-launcher:hover { transform: translateY(-3px); }
   .yai-launcher:hover .yai-tooltip { opacity: 1; transform: none; }
   .yai-icon-button:hover { background: var(--soft-fill-hover); color: var(--white); }
@@ -86,6 +124,7 @@ body:has(.yai-dialog[open]) { overflow: hidden; }
   .yai-new:hover { color: var(--white); }
 }
 @media (max-width: 520px) {
+  .yai-welcome { right: max(16px, env(safe-area-inset-right)); bottom: calc(max(16px, env(safe-area-inset-bottom)) + 72px); max-width: calc(100vw - 32px); }
   .yai-launcher { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); width: 56px; height: 56px; }
   .yai-dialog { inset: max(8px, env(safe-area-inset-top)) 8px max(8px, env(safe-area-inset-bottom)); width: calc(100vw - 16px); max-width: none; height: calc(100dvh - max(8px, env(safe-area-inset-top)) - max(8px, env(safe-area-inset-bottom))); max-height: none; border-radius: 20px; }
   .yai-header { padding: 15px 14px; gap: 10px; }
@@ -99,6 +138,9 @@ body:has(.yai-dialog[open]) { overflow: hidden; }
 @keyframes yai-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 @keyframes yai-dot { 0%, 70%, 100% { opacity: .3; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-3px); } }
 @media (prefers-reduced-motion: reduce) {
+  .yai-welcome { transform: none !important; transition: opacity 125ms ease; }
+  .yai-welcome-close { transition: color 125ms ease, background 125ms ease; }
+  .yai-welcome-close:active { transform: none; }
   .yai-launcher::before, .yai-launcher svg, .yai-typing span { animation: none; }
   .yai-typing span { opacity: .65; }
   .yai-dialog, .yai-launcher, .yai-tooltip { transform: none !important; transition: opacity 125ms ease; }
