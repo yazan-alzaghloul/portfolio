@@ -350,7 +350,7 @@
     .impact-focus span { color: var(--cyan); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .impact-focus strong { color: var(--text-soft); font: 400 .78rem/1.6 "DM Sans", sans-serif; letter-spacing: 0; }
 
-    /* Portrait layers: architecture behind, unmodified photograph in front. */
+    /* Portrait layers: architecture behind, enhanced photograph in front. */
     .hero-portrait { position: relative; min-width: 0; width: 100%; max-width: 470px; margin: 0; justify-self: end; aspect-ratio: .86; }
     .js .hero-portrait { animation: heroEnter 260ms 260ms var(--ease-out) both; }
     .portrait-depth { position: absolute; inset: 0; transition: transform 250ms var(--ease-out); }
@@ -359,7 +359,7 @@
     .portrait-orbit::after { content: ""; position: absolute; inset: 6%; border: 1px solid var(--line); border-radius: inherit; }
     .portrait-panel { position: absolute; inset: 18% 2% 1% 10%; border: 1px solid color-mix(in srgb, var(--blue) 25%, var(--line)); border-radius: 110px 28px 28px 28px; background: linear-gradient(145deg, color-mix(in srgb, var(--indigo) 12%, transparent), transparent 65%), var(--soft-fill); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 12%, transparent), 0 22px 65px color-mix(in srgb, var(--bg) 65%, transparent); backdrop-filter: blur(12px); }
     .portrait-panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; opacity: .25; mask-image: linear-gradient(150deg, #000, transparent 70%); }
-    .portrait-image { position: absolute; inset: auto -4% 0; display: block; width: 108%; }
+    .portrait-image { position: absolute; inset: auto 2% 1% 10%; display: block; width: 88%; overflow: hidden; border: 1px solid var(--line); border-radius: 110px 28px 28px 28px; }
     .portrait-image img { display: block; width: 100%; height: auto; max-width: none; mask-image: linear-gradient(#000 88%, transparent 100%); }
     html[data-theme="light"] .portrait-light { opacity: .6; }
     html[data-theme="light"] .portrait-panel { box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 22px 65px rgba(30,62,99,.08); }
@@ -703,8 +703,8 @@
             <div class="portrait-orbit" aria-hidden="true"></div>
             <div class="portrait-panel" aria-hidden="true"></div>
             <picture class="portrait-image">
-              <source type="image/webp" srcset="assets/yazan-hero-400.webp 400w, assets/yazan-hero-640.webp 640w" sizes="(max-width: 767px) 360px, (max-width: 980px) 40vw, 470px">
-              <img src="assets/yazan-alzaghloul-transparent.png" width="640" height="641" alt="Yazan Alzaghloul wearing a dark suit and tie" fetchpriority="high" decoding="async">
+              <source type="image/webp" srcset="assets/yazan-hero-enhanced-480.webp 480w, assets/yazan-hero-enhanced-960.webp 960w, assets/yazan-hero-enhanced-1440.webp 1440w" sizes="(max-width: 440px) 75vw, (max-width: 767px) 317px, (max-width: 980px) 34vw, 414px">
+              <img src="assets/yazan-hero-enhanced-fallback.jpg" width="960" height="970" alt="Yazan Alzaghloul wearing a dark suit and tie" fetchpriority="high" decoding="async">
             </picture>
           </div>
         </figure>
