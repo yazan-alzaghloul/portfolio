@@ -2,7 +2,7 @@ import { config, welcome, suggestions } from './config.mjs?v=2';
 import { askAssistant, safeSources } from './service.mjs?v=2';
 
 const icons = {
-  robot: '<rect x="4" y="7" width="16" height="13" rx="5"/><path d="M12 3v4M9 15h6M1 12v4m22-4v4"/><circle cx="8.5" cy="11.5" r=".6"/><circle cx="15.5" cy="11.5" r=".6"/>',
+  robot: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m12 7.5 1.1 2.4 2.4 1.1-2.4 1.1L12 14.5l-1.1-2.4-2.4-1.1 2.4-1.1z"/>',
   close: '<path d="m6 6 12 12M6 18 18 6"/>',
   minimize: '<path d="M5 15h14"/>',
   send: '<path d="M12 20V4m-7 7 7-7 7 7"/>',

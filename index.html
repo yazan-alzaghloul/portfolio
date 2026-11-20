@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSZWLDCH74"></script>
   <script>
@@ -10,37 +13,50 @@
     gtag('config', 'G-ZSZWLDCH74');
   </script>
 
-  <!-- Metadata and fonts -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07101c" id="theme-color-meta">
+  <!-- Theme before first paint: no flash of the wrong theme. -->
+  <script>
+    (() => {
+      const root = document.documentElement;
+      root.classList.replace('no-js', 'js');
+      try {
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        root.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      } catch { root.dataset.theme = 'dark'; }
+    })();
+  </script>
+
+  <title>Yazan Alzaghloul | Engineering Manager &amp; Mobile Architect</title>
+  <meta name="description" content="Engineering Manager, Senior Software Engineer, and Mobile Architect with 10 years of experience delivering secure digital banking, enterprise mobile, and AI-powered engineering solutions in the UAE.">
+  <meta name="theme-color" content="#090c11" id="theme-color-meta">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="Yazan Alzaghloul">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="description" content="Engineering Manager, Senior Software Engineer, and Mobile Architect with 10 years of experience delivering secure digital banking, enterprise mobile, and AI-assisted engineering solutions.">
-  <title>Yazan Alzaghloul | Engineering Manager &amp; Mobile Architect</title>
   <link rel="canonical" href="https://yazan-alzaghloul.github.io/portfolio/">
   <link rel="alternate" hreflang="en" href="https://yazan-alzaghloul.github.io/portfolio/">
   <link rel="alternate" hreflang="x-default" href="https://yazan-alzaghloul.github.io/portfolio/">
   <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <meta property="og:type" content="website">
+
+  <meta property="og:type" content="profile">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Yazan Alzaghloul Portfolio">
   <meta property="og:url" content="https://yazan-alzaghloul.github.io/portfolio/">
   <meta property="og:title" content="Yazan Alzaghloul | Engineering Manager &amp; Mobile Architect">
-  <meta property="og:description" content="10 years of engineering secure digital products across engineering management, mobile architecture, digital banking, and AI-assisted engineering.">
+  <meta property="og:description" content="10 years engineering secure digital products: engineering management, mobile architecture, digital banking, and AI-powered engineering.">
   <meta property="og:image" content="https://yazan-alzaghloul.github.io/portfolio/og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Yazan Alzaghloul, Engineering Manager and Mobile Architect">
+  <meta property="profile:first_name" content="Yazan">
+  <meta property="profile:last_name" content="Alzaghloul">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yazan Alzaghloul | Engineering Manager &amp; Mobile Architect">
-  <meta name="twitter:description" content="10 years of engineering secure digital products across engineering management, mobile architecture, digital banking, and AI-assisted engineering.">
+  <meta name="twitter:description" content="10 years engineering secure digital products: engineering management, mobile architecture, digital banking, and AI-powered engineering.">
   <meta name="twitter:url" content="https://yazan-alzaghloul.github.io/portfolio/">
   <meta name="twitter:image" content="https://yazan-alzaghloul.github.io/portfolio/og.png">
   <meta name="twitter:image:alt" content="Yazan Alzaghloul, Engineering Manager and Mobile Architect">
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,8 +82,13 @@
           "@id": "https://yazan-alzaghloul.github.io/portfolio/#person",
           "name": "Yazan Alzaghloul",
           "url": "https://yazan-alzaghloul.github.io/portfolio/",
+          "image": "https://yazan-alzaghloul.github.io/portfolio/assets/yazan-hero-enhanced-960.webp",
           "jobTitle": ["Engineering Manager", "Senior Software Engineer", "Mobile Architect"],
+          "worksFor": { "@type": "Organization", "name": "Finance House", "url": "https://www.financehouse.ae/" },
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Damascus University" },
+          "address": { "@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE" },
           "sameAs": ["https://www.linkedin.com/in/yazan-alzaghloul"],
+          "knowsLanguage": ["Arabic", "English"],
           "knowsAbout": [
             "Mobile application architecture",
             "Engineering management",
@@ -76,7 +97,7 @@
             "Swift",
             "Flutter",
             "Secure enterprise software",
-            "AI-assisted engineering"
+            "AI-powered engineering"
           ],
           "hasCredential": [
             {
@@ -84,573 +105,67 @@
               "name": "Claude 101 by Anthropic",
               "credentialCategory": "Certificate of completion",
               "url": "https://www.linkedin.com/learning/certificates/6bc81bd73f29fee19c9df495cdd3cd81b585681410dd6b0318bf75e38366972f?u=86013394",
-              "recognizedBy": {
-                "@type": "Organization",
-                "name": "Anthropic",
-                "url": "https://www.anthropic.com/"
-              },
-              "competencyRequired": [
-                "Artificial Intelligence (AI)",
-                "Anthropic Claude",
-                "AI literacy"
-              ]
+              "recognizedBy": { "@type": "Organization", "name": "Anthropic", "url": "https://www.anthropic.com/" },
+              "competencyRequired": ["Artificial Intelligence (AI)", "Anthropic Claude", "AI literacy"]
             },
             {
               "@type": "EducationalOccupationalCredential",
               "name": "AI Fluency: Framework and Foundations by Anthropic",
               "credentialCategory": "Certificate of completion",
               "url": "https://www.linkedin.com/learning/certificates/7e4a9269d451a7e90ac275330ee86e6c324ac28a0868662d33d1ffef9db2ea98?u=86013394",
-              "recognizedBy": {
-                "@type": "Organization",
-                "name": "Anthropic",
-                "url": "https://www.anthropic.com/"
-              },
-              "competencyRequired": [
-                "Artificial intelligence (AI)",
-                "AI Fluency"
-              ]
+              "recognizedBy": { "@type": "Organization", "name": "Anthropic", "url": "https://www.anthropic.com/" },
+              "competencyRequired": ["Artificial intelligence (AI)", "AI Fluency"]
             }
           ]
         }
       ]
     }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet">
-  <script>
-    (() => {
-      const root = document.documentElement;
-      root.classList.replace('no-js', 'js');
-      try {
-        const savedTheme = localStorage.getItem('portfolio-theme');
-        root.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-      } catch { root.dataset.theme = 'dark'; }
-    })();
-  </script>
-
-  <style>
-    /* CSS variables and reset */
-    :root {
-      color-scheme: dark;
-      --bg: #07101c;
-      --bg-soft: #0b1626;
-      --surface: rgba(15, 28, 46, .74);
-      --surface-strong: rgba(18, 34, 55, .94);
-      --white: #f4f8ff;
-      --muted: #9aabc2;
-      --text-strong: #dbe6f4;
-      --text-soft: #bcc9da;
-      --indigo: #5b7cfa;
-      --blue: #2e9bff;
-      --cyan: #28c7b7;
-      --amber: #e6b566;
-      --line: rgba(165, 190, 225, .14);
-      --nav-bg: rgba(7, 16, 28, .76);
-      --nav-solid: rgba(7, 16, 28, .97);
-      --soft-fill: rgba(126, 165, 215, .055);
-      --soft-fill-hover: rgba(126, 165, 215, .11);
-      --panel-bg: rgba(8, 18, 31, .93);
-      --panel-hover: rgba(18, 35, 57, .98);
-      --accent-surface-end: rgba(9, 20, 34, .86);
-      --ring-line: rgba(255, 255, 255, .48);
-      --noise-one: rgba(255, 255, 255, .45);
-      --noise-two: rgba(255, 255, 255, .25);
-      --radius-lg: 28px;
-      --radius-md: 18px;
-      --shadow: 0 22px 70px rgba(0, 0, 0, .42);
-      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-      --max: 1180px;
-      --nav-h: 76px;
-    }
-
-    html[data-theme="light"] {
-      color-scheme: light;
-      --bg: #f4f7fb;
-      --bg-soft: #e8eff7;
-      --surface: rgba(255, 255, 255, .78);
-      --surface-strong: rgba(255, 255, 255, .94);
-      --white: #0b1728;
-      --muted: #56677d;
-      --text-strong: #22324a;
-      --text-soft: #3d5068;
-      --indigo: #3f5fd2;
-      --blue: #006fc9;
-      --cyan: #007e74;
-      --amber: #805a0b;
-      --line: rgba(20, 48, 82, .15);
-      --nav-bg: rgba(255, 255, 255, .76);
-      --nav-solid: rgba(255, 255, 255, .98);
-      --soft-fill: rgba(32, 80, 130, .05);
-      --soft-fill-hover: rgba(32, 80, 130, .09);
-      --panel-bg: rgba(255, 255, 255, .94);
-      --panel-hover: #fff;
-      --accent-surface-end: rgba(255, 255, 255, .88);
-      --ring-line: rgba(17, 21, 34, .32);
-      --noise-one: rgba(16, 24, 40, .24);
-      --noise-two: rgba(16, 24, 40, .14);
-      --shadow: 0 22px 70px rgba(30, 62, 99, .14);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scrollbar-color: var(--indigo) var(--bg); }
-    body {
-      margin: 0;
-      min-width: 320px;
-      background:
-        radial-gradient(circle at 14% 9%, rgba(91, 124, 250, .15), transparent 27rem),
-        radial-gradient(circle at 92% 38%, rgba(46, 155, 255, .08), transparent 25rem),
-        var(--bg);
-      color: var(--white);
-      font: 400 1rem/1.65 "DM Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      pointer-events: none;
-      opacity: .12;
-      background-image:
-        repeating-radial-gradient(circle at 17% 29%, var(--noise-one) 0 .55px, transparent .7px 4px),
-        repeating-radial-gradient(circle at 73% 61%, var(--noise-two) 0 .45px, transparent .6px 5px);
-      background-size: 7px 9px, 11px 13px;
-      mix-blend-mode: soft-light;
-    }
-    html[data-theme="light"] body::after { opacity: .07; mix-blend-mode: multiply; }
-    ::selection { color: #fff; background: rgba(46, 155, 255, .76); }
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb {
-      border: 2px solid var(--bg);
-      border-radius: 999px;
-      background: linear-gradient(var(--indigo), var(--blue), var(--cyan));
-    }
-    img, svg { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { color: inherit; font: inherit; }
-    ul { margin: 0; padding: 0; }
-    p { margin: 0; }
-    h1, h2, h3 { margin: 0; font-family: "Syne", ui-sans-serif, system-ui, sans-serif; line-height: 1.08; }
-    section { position: relative; scroll-margin-top: calc(var(--nav-h) + 24px); }
-    :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 6px; }
-
-    /* Layout and components */
-    .skip-link {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 10002;
-      transform: translateY(-150%);
-      padding: .7rem 1rem;
-      color: #071017;
-      background: var(--cyan);
-      border-radius: 10px;
-      font-weight: 700;
-    }
-    .skip-link:focus { transform: translateY(0); }
-    #particle-canvas { position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%; pointer-events: none; }
-    .page-glow { position: fixed; z-index: -1; width: 34rem; height: 34rem; border-radius: 50%; filter: blur(110px); opacity: .09; pointer-events: none; }
-    .page-glow.one { top: 20%; left: -15rem; background: var(--cyan); }
-    .page-glow.two { right: -15rem; bottom: 8%; background: var(--blue); }
-
-    .site-header {
-      position: fixed;
-      top: 14px;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 0 18px;
-      animation: navDrop .8s .15s both cubic-bezier(.2,.8,.2,1);
-    }
-    .nav {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: min(100%, var(--max));
-      min-height: 62px;
-      margin: auto;
-      padding: 0 16px 0 22px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--nav-bg);
-      box-shadow: 0 12px 45px rgba(0,0,0,.2);
-      backdrop-filter: blur(18px) saturate(140%);
-    }
-    .logo { display: inline-flex; align-items: center; gap: .72rem; font-family: "Syne", sans-serif; font-weight: 800; letter-spacing: -.03em; }
-    .logo-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; background: linear-gradient(135deg, rgba(91,124,250,.42), rgba(46,155,255,.22)); color: #fff; }
-    .nav-actions { display: flex; align-items: center; gap: .72rem; }
-    .nav-links { display: flex; align-items: center; gap: 1.35rem; list-style: none; }
-    .nav-link { position: relative; padding: .55rem 0; color: var(--muted); font-size: .88rem; font-weight: 600; transition: color .25s ease; }
-    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .28rem; height: 2px; transform: scaleX(0); transform-origin: right; background: linear-gradient(90deg, var(--blue), var(--cyan)); transition: transform .25s ease; }
-    .nav-link:hover, .nav-link:focus-visible, .nav-link.active { color: var(--white); }
-    .nav-link:hover::after, .nav-link:focus-visible::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
-    .nav-cv { display: inline-flex; min-height: 38px; align-items: center; gap: .42rem; padding: .52rem .78rem; border: 1px solid rgba(91,124,250,.35); border-radius: 11px; background: linear-gradient(120deg, rgba(91,124,250,.18), rgba(46,155,255,.1)); color: var(--white); font-size: .76rem; font-weight: 800; box-shadow: 0 8px 22px rgba(0,0,0,.16); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; white-space: nowrap; }
-    .nav-cv:hover, .nav-cv:focus-visible { transform: translateY(-2px); border-color: rgba(40,199,183,.46); box-shadow: 0 10px 26px rgba(0,0,0,.22); }
-    .theme-toggle, .menu-toggle { width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--soft-fill); cursor: pointer; transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; }
-    .theme-toggle { position: relative; display: grid; flex: 0 0 42px; place-items: center; overflow: hidden; }
-    .theme-toggle:hover { transform: translateY(-2px); border-color: rgba(91,124,250,.42); background: var(--soft-fill-hover); box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-    .theme-toggle:active { transform: translateY(0); }
-    .theme-icon { font-size: 1.05rem; line-height: 1; }
-    .theme-moon { display: none; }
-    html[data-theme="light"] .theme-sun { display: none; }
-    html[data-theme="light"] .theme-moon { display: block; }
-    .menu-toggle { display: none; }
-    .no-js .theme-toggle, .no-js .menu-toggle { display: none !important; }
-    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; transition: transform .25s ease, opacity .25s ease; }
-    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
-    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
-
-    main { overflow: hidden; }
-    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-    .section { padding: clamp(5rem, 9vw, 8rem) 0; }
-    .section-head { display: grid; grid-template-columns: minmax(0, .7fr) minmax(280px, 1fr); gap: 2rem; align-items: end; margin-bottom: 3rem; }
-    .eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: .85rem; color: var(--cyan); font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    .section-title { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -.05em; }
-    .section-intro { max-width: 650px; color: var(--muted); font-size: 1.05rem; }
-    .glass { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018)), var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(16px); }
-
-    .hero { min-height: 100svh; display: grid; align-items: center; overflow: hidden; padding: calc(var(--nav-h) + 2.5rem) 0 3rem; isolation: isolate; }
-    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 80% 48%, color-mix(in srgb, var(--indigo) 10%, transparent), transparent 48%); }
-    .hero-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .88fr); align-items: center; column-gap: clamp(2rem, 4vw, 4rem); }
-    .hero-content { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
-    .js .hero-content > * { animation: heroEnter 260ms var(--ease-out) both; }
-    .js .hero-content > :nth-child(1) { animation-delay: 80ms; }
-    .js .hero-content > :nth-child(2) { animation-delay: 140ms; }
-    .js .hero-content > :nth-child(3) { animation-delay: 200ms; }
-    .js .hero-content > :nth-child(4) { animation-delay: 260ms; }
-    .js .hero-content > :nth-child(5) { animation-delay: 320ms; }
-    .js .hero-content > :nth-child(6) { animation-delay: 380ms; }
-    .js .hero-content > :nth-child(7) { animation-delay: 440ms; }
-    .availability-tag { display: inline-flex; min-height: 35px; align-items: center; gap: .62rem; margin-bottom: 1.45rem; padding: .42rem .78rem; border: 1px solid rgba(40,199,183,.3); border-radius: 999px; background: linear-gradient(110deg, rgba(91,124,250,.13), rgba(46,155,255,.08), rgba(40,199,183,.1)); background-size: 220% 100%; color: var(--text-strong); font-size: .72rem; font-weight: 700; letter-spacing: .01em; max-width: 100%; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
-    .availability-tag::before { content: ""; width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 0 rgba(255,255,255,.2), 0 0 8px rgba(255,255,255,.28);  }
-    .hero-kicker { margin-bottom: .55rem; color: var(--muted); font-size: .78rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-    .hero h1 { max-width: 100%; font-size: clamp(3.5rem, 6.5vw, 5.3rem); letter-spacing: -.065em; line-height: 1; }
-    .hero h1 > span { display: block; }
-    .hero-name-accent { display: inline-block; padding-right: .07em; color: var(--blue); }
-    .role-lockup { display: grid; max-width: 580px; justify-items: start; gap: .72rem; margin-top: 1.4rem; }
-    .primary-role { display: inline-flex; align-items: center; padding: .48rem .92rem; border: 1px solid var(--line); border-radius: 999px; background: var(--soft-fill); color: var(--text-strong); font: 800 clamp(.92rem, 1.55vw, 1.08rem)/1.15 "Syne", sans-serif; letter-spacing: -.015em; box-shadow: 0 10px 30px rgba(0,0,0,.08); white-space: nowrap; }
-    .supporting-roles { color: var(--muted); font: 600 clamp(.94rem, 1.65vw, 1.1rem)/1.55 "DM Sans", sans-serif; text-align: left; }
-    .hero-copy { max-width: 560px; margin-top: 1.05rem; color: var(--muted); font-size: 1rem; line-height: 1.7; }
-    .hero-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1.6rem; margin-top: 1.6rem; }
-    .hero-link { position: relative; display: inline-flex; align-items: center; gap: .52rem; padding: .3rem 0; color: var(--text-strong); font: 800 .88rem/1.2 "Syne", sans-serif; letter-spacing: -.01em; }
-    .hero-link::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: linear-gradient(90deg, var(--blue), var(--cyan)); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
-    .hero-link-arrow { color: var(--cyan); font: 800 1rem/1 "DM Sans", sans-serif; transition: transform .25s ease; }
-    .hero-link:hover::after, .hero-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
-    .hero-link:hover .hero-link-arrow, .hero-link:focus-visible .hero-link-arrow { transform: translateY(2px); }
-    .hero-impact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; width: 100%; margin: 2rem 0 0; padding-top: 1.3rem; border-top: 1px solid var(--line); text-align: left; }
-    .impact-item { display: flex; min-width: 0; flex-direction: column; gap: .4rem; }
-    .impact-item strong { color: var(--white); font: 800 clamp(1.65rem, 3vw, 2rem)/1 "Syne", sans-serif; letter-spacing: -.045em; }
-    .impact-item span { color: var(--muted); font-size: .72rem; font-weight: 500; line-height: 1.4; }
-    .impact-focus { grid-column: 1 / -1; margin-top: .3rem; }
-    .impact-focus span { color: var(--cyan); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .impact-focus strong { color: var(--text-soft); font: 400 .78rem/1.6 "DM Sans", sans-serif; letter-spacing: 0; }
-
-    /* Portrait layers: architecture behind, enhanced photograph in front. */
-    .hero-portrait { position: relative; min-width: 0; width: 100%; max-width: 470px; margin: 0; justify-self: end; aspect-ratio: .86; }
-    .js .hero-portrait { animation: heroEnter 260ms 260ms var(--ease-out) both; }
-    .portrait-depth { position: absolute; inset: 0; transition: transform 250ms var(--ease-out); }
-    .portrait-light { position: absolute; inset: 8% -12% -2%; border-radius: 50%; background: radial-gradient(ellipse at 60% 42%, color-mix(in srgb, var(--indigo) 22%, transparent), transparent 65%), radial-gradient(ellipse at 35% 72%, color-mix(in srgb, var(--cyan) 14%, transparent), transparent 60%); pointer-events: none; }
-    .portrait-orbit { position: absolute; inset: 9% -3% 4%; border: 1px solid color-mix(in srgb, var(--indigo) 28%, var(--line)); border-radius: 50%; transform: rotate(-24deg); pointer-events: none; }
-    .portrait-orbit::after { content: ""; position: absolute; inset: 6%; border: 1px solid var(--line); border-radius: inherit; }
-    .portrait-panel { position: absolute; inset: 18% 2% 1% 10%; border: 1px solid color-mix(in srgb, var(--blue) 25%, var(--line)); border-radius: 110px 28px 28px 28px; background: linear-gradient(145deg, color-mix(in srgb, var(--indigo) 12%, transparent), transparent 65%), var(--soft-fill); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--white) 12%, transparent), 0 22px 65px color-mix(in srgb, var(--bg) 65%, transparent); backdrop-filter: blur(12px); }
-    .portrait-panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; opacity: .25; mask-image: linear-gradient(150deg, #000, transparent 70%); }
-    .portrait-image { position: absolute; inset: 18% 2% 1% 10%; display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 110px 28px 28px 28px; }
-    .portrait-image img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 35%; }
-    html[data-theme="light"] .portrait-light { opacity: .6; }
-    html[data-theme="light"] .portrait-panel { box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 22px 65px rgba(30,62,99,.08); }
-    @media (prefers-reduced-transparency: reduce) { .portrait-panel { backdrop-filter: none; background: var(--bg-soft); } }
-    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-      .portrait-orbit { animation: portraitOrbit 2.4s cubic-bezier(0.77, 0, 0.175, 1) 2 alternate; }
-    }
-    @keyframes portraitOrbit { from { transform: rotate(-24deg); } to { transform: rotate(-20deg); } }
-
-    .about-panel { display: grid; grid-template-columns: .82fr 1.18fr; gap: 1.2rem; }
-    .about-lead, .about-strengths { border-radius: var(--radius-lg); }
-    .about-lead { display: flex; min-height: 390px; flex-direction: column; justify-content: space-between; padding: clamp(1.7rem, 4vw, 2.8rem); background: linear-gradient(145deg, rgba(91,124,250,.18), var(--accent-surface-end) 60%); }
-    .tenure-lockup { display: flex; align-items: flex-end; gap: clamp(.85rem, 2vw, 1.35rem); }
-    .about-lead .big-number { font: 800 clamp(5rem, 12vw, 9rem)/.8 "Syne", sans-serif; letter-spacing: -.09em; }
-    .about-lead .big-number span { color: var(--blue); }
-    .tenure-label { padding-bottom: .35rem; color: var(--cyan); font-size: clamp(.68rem, 1.2vw, .82rem); font-weight: 800; letter-spacing: .13em; line-height: 1.35; text-align: left; text-transform: uppercase; }
-    .about-lead p { max-width: 330px; color: var(--text-strong); font-size: 1.05rem; }
-    .about-strengths { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; padding: 1px; background: var(--line); }
-    .strength { min-height: 190px; padding: clamp(1.45rem, 3vw, 2rem); background: var(--panel-bg); transition: background .3s ease, transform .3s ease; }
-    .strength:hover { background: var(--panel-hover); transform: translateY(-2px); }
-    .strength-index { color: var(--blue); font: 700 .75rem/1 "Syne", sans-serif; letter-spacing: .14em; }
-    .strength h3 { margin: 1.5rem 0 .65rem; font-size: 1.12rem; }
-    .strength p { color: var(--muted); font-size: .9rem; }
-
-    .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .skill-group { padding: 1.7rem; border-radius: var(--radius-md); transition: transform .3s ease, border-color .3s ease; }
-    .skill-group:hover { transform: translateY(-4px); border-color: rgba(91,124,250,.44); }
-    .skill-group h3 { display: flex; align-items: center; gap: .65rem; margin-bottom: 1rem; font-size: 1.02rem; }
-    .skill-group h3::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--group-accent, var(--cyan)); }
-    .chip-cloud { display: flex; flex-wrap: wrap; gap: .55rem; }
-    .chip { display: inline-flex; align-items: center; min-height: 31px; padding: .35rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--soft-fill); color: var(--text-soft); font-size: .78rem; line-height: 1.3; transition: transform .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; }
-    .chip:hover { transform: translateY(-3px); color: var(--white); border-color: color-mix(in srgb, var(--group-accent, var(--cyan)) 55%, transparent); box-shadow: 0 8px 22px rgba(0,0,0,.16); }
-
-    .timeline { position: relative; max-width: 1030px; margin: auto; padding-left: 48px; }
-    .timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 14px; width: 2px; background: linear-gradient(var(--indigo), var(--blue), var(--amber), var(--cyan)); background-size: 100% 200%; animation: lineFlow 4s linear infinite; }
-    .role { position: relative; margin-bottom: 1.15rem; padding: clamp(1.5rem, 4vw, 2.2rem); border-radius: var(--radius-md); transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
-    .role::before { content: ""; position: absolute; top: 34px; left: -41px; width: 13px; height: 13px; border: 3px solid var(--bg); border-radius: 50%; background: var(--role-accent, var(--blue)); }
-    .role:hover { transform: translateX(7px); border-color: rgba(46,155,255,.35); box-shadow: 0 22px 60px rgba(0,0,0,.18); }
-    .role-head { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; margin-bottom: 1.25rem; }
-    .role-company { margin-bottom: .4rem; color: var(--cyan); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .company-link { display: inline-flex; align-items: center; gap: .38rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .28rem; transition: color .25s ease, text-decoration-color .25s ease; }
-    .company-link:hover, .company-link:focus-visible { color: var(--white); text-decoration-color: var(--cyan); }
-    .company-link span { color: var(--blue); font-size: .78em; }
-    .role h3 { font-size: clamp(1.25rem, 3vw, 1.65rem); }
-    .role-meta { text-align: right; color: var(--muted); font-size: .82rem; }
-    .role-meta span { display: block; }
-    .role ul { display: grid; gap: .62rem; padding-left: 1.2rem; color: var(--text-soft); }
-    .role li::marker { color: var(--role-accent, var(--blue)); }
-    .role-position + .role-position { margin-top: 1.7rem; padding-top: 1.7rem; border-top: 1px solid var(--line); }
-    .role-position-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-    .role-position-head h4 { margin: 0; color: var(--white); font: 700 1rem/1.3 "Syne", sans-serif; }
-    .role-position-head time { flex: 0 0 auto; color: var(--muted); font-size: .8rem; }
-    .role-tags { display: flex; flex-wrap: wrap; gap: .48rem; margin-top: 1.25rem; }
-
-    .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .project-card { position: relative; display: flex; min-height: 320px; flex-direction: column; overflow: hidden; padding: 1.7rem; border-radius: var(--radius-md); transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
-    .project-card::before { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--indigo), var(--blue), var(--cyan), var(--amber), transparent); transition: left .6s ease; }
-    .project-card:hover { transform: translateY(-8px); border-color: rgba(91,124,250,.28); box-shadow: 0 24px 70px rgba(0,0,0,.2); }
-    .project-card:hover::before { left: 100%; }
-    .project-icon { display: grid; width: 50px; height: 50px; margin-bottom: 2.1rem; place-items: center; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, rgba(91,124,250,.17), rgba(46,155,255,.08)); font-size: 1.45rem; box-shadow: inset 0 0 18px rgba(255,255,255,.025); }
-    .project-card h3 { font-size: 1.22rem; }
-    .project-card p { margin-top: .8rem; color: var(--muted); font-size: .9rem; }
-    .project-impact { display: block; margin-top: 1rem; color: var(--cyan); font-size: .78rem; font-weight: 700; }
-    .project-card .role-tags { margin-top: 1.2rem; }
-    .project-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: auto; padding-top: 1.25rem; }
-    .store-link { display: inline-flex; min-height: 36px; align-items: center; gap: .42rem; padding: .42rem .72rem; border: 1px solid var(--line); border-radius: 10px; background: var(--soft-fill); color: var(--text-strong); font-size: .76rem; font-weight: 700; transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; }
-    .store-link::before { display: grid; width: 18px; height: 18px; flex: 0 0 18px; place-items: center; color: #fff; font: 800 .68rem/1 "DM Sans", sans-serif; }
-    .store-link[href*="play.google.com"]::before { content: "▶"; border-radius: 5px; background: linear-gradient(135deg, #28c7b7 0 36%, #75c95b 36% 59%, #e6b566 59% 78%, #ef5b5b 78%); text-shadow: 0 1px 3px rgba(0,0,0,.35); }
-    .store-link[href*="apps.apple.com"]::before { content: "A"; border: 1px solid rgba(255,255,255,.35); border-radius: 5px; background: linear-gradient(145deg, #46b5ff, #5b7cfa 55%, #287cc2); box-shadow: inset 0 0 6px rgba(255,255,255,.2); }
-    .store-link:hover, .store-link:focus-visible { transform: translateY(-2px); border-color: color-mix(in srgb, var(--store-color, var(--cyan)) 55%, transparent); background: var(--soft-fill-hover); box-shadow: 0 8px 22px rgba(0,0,0,.16); }
-
-    .marquee-section { padding: 1.6rem 0; border-block: 1px solid var(--line); background: var(--soft-fill); overflow: hidden; }
-    .marquee-label { margin-bottom: 1rem; color: var(--muted); text-align: center; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-    .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    .marquee-set { display: flex; align-items: center; }
-    .marquee-item { display: inline-flex; align-items: center; gap: 1.1rem; padding: 0 1.8rem; color: var(--text-strong); font: 700 1rem/1 "Syne", sans-serif; white-space: nowrap; }
-    .marquee-item::after { content: "✦"; color: var(--blue); font-size: .75rem; }
-
-    .credentials-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 1rem; }
-    .credential-card { padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--radius-md); }
-    .credential-label { color: var(--cyan); font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-    .education-card { position: relative; display: flex; min-height: 100%; flex-direction: column; overflow: hidden; isolation: isolate; }
-    .education-card::before { content: ""; position: absolute; right: -118px; bottom: -138px; z-index: -1; width: 300px; height: 300px; border: 1px solid rgba(40,199,183,.18); border-radius: 50%; background: radial-gradient(circle, rgba(91,124,250,.08), transparent 66%); }
-    .education-card::after { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 42%; background: linear-gradient(var(--cyan), var(--blue), transparent); }
-    .education-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
-    .education-year { display: grid; gap: .2rem; text-align: right; }
-    .education-year span { color: var(--muted); font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .education-year strong { color: var(--white); font: 800 clamp(2.8rem, 5vw, 4.5rem)/.86 "Syne", sans-serif; letter-spacing: -.08em; }
-    .education-school { margin: clamp(3.2rem, 6vw, 5.5rem) 0 2.4rem; }
-    .education-school h3 { max-width: 10ch; font-size: clamp(1.65rem, 3vw, 2.2rem); line-height: 1.08; }
-    .education-school p { max-width: 28ch; margin-top: .85rem; color: var(--muted); line-height: 1.6; }
-    .education-degree { display: grid; gap: .42rem; margin-top: auto; padding-top: 1.3rem; border-top: 1px solid var(--line); }
-    .education-degree span { color: var(--muted); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .education-degree strong { color: var(--white); font: 700 1.05rem/1.4 "Syne", sans-serif; }
-    .award-list { display: grid; gap: .7rem; margin-top: 1.2rem; list-style: none; }
-    .award { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; padding: 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--soft-fill); }
-    .award-year { display: grid; min-width: 52px; min-height: 32px; place-items: center; border-radius: 9px; background: rgba(255,183,43,.12); color: var(--amber); font-size: .74rem; font-weight: 700; }
-    .award h3 { font: 600 .96rem/1.45 "DM Sans", sans-serif; }
-    .award p { margin-top: .25rem; color: var(--muted); font-size: .78rem; }
-    .certificates { margin-top: 1rem; padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--radius-md); }
-    .certificates h3 { margin-top: .55rem; font-size: clamp(1.45rem, 3vw, 2rem); }
-    .certificates-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
-    .certificates-intro { max-width: 58ch; margin-top: .65rem; color: var(--muted); font-size: .88rem; line-height: 1.65; }
-    .certificates-all { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .5rem; padding: .72rem .9rem; border: 1px solid var(--line); border-radius: 12px; color: var(--text-strong); font-size: .76rem; font-weight: 800; white-space: nowrap; transition: transform .25s var(--ease-out), border-color .25s ease, background .25s ease; }
-    .certificates-all:hover, .certificates-all:focus-visible { transform: translateY(-2px); border-color: rgba(40,199,183,.36); background: var(--soft-fill-hover); }
-    .certificates-all span { color: var(--cyan); }
-    .certificate-link { display: grid; grid-template-columns: minmax(150px, .34fr) 1fr auto; margin-top: 1.35rem; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--soft-fill); transition: transform .3s var(--ease-out), border-color .3s ease, background .3s ease, box-shadow .3s ease; }
-    .certificate-link:hover, .certificate-link:focus-visible { transform: translateY(-4px); border-color: rgba(40,199,183,.36); background: var(--soft-fill-hover); box-shadow: 0 18px 42px rgba(0,0,0,.16); }
-    .certificate-mark { position: relative; display: grid; min-height: 180px; place-items: center; overflow: hidden; border-right: 1px solid var(--line); background: linear-gradient(145deg, rgba(91,124,250,.2), rgba(40,199,183,.08)); }
-    .certificate-mark::before { content: ""; position: absolute; width: 112px; height: 112px; border: 1px solid rgba(40,199,183,.2); border-radius: 38%; transform: rotate(16deg); }
-    .certificate-mark strong { position: relative; color: var(--white); font: 800 3rem/1 "Syne", sans-serif; letter-spacing: -.08em; }
-    .certificate-copy { align-self: center; padding: 1.35rem 1.5rem; }
-    .certificate-provider { color: var(--cyan); font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-    .certificate-copy h4 { margin-top: .55rem; font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
-    .certificate-skills { max-width: 650px; margin-top: .8rem; color: var(--muted); font-size: .86rem; line-height: 1.65; }
-    .certificate-skills strong { color: var(--text-strong); }
-    .certificate-action { display: flex; min-width: 158px; align-items: center; justify-content: center; gap: .55rem; padding: 1.25rem; border-left: 1px solid var(--line); color: var(--white); font-size: .78rem; font-weight: 800; white-space: nowrap; }
-    .certificate-action span { color: var(--cyan); transition: transform .25s ease; }
-    .certificate-link:hover .certificate-action span, .certificate-link:focus-visible .certificate-action span { transform: translate(3px, -3px); }
-    .languages { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-    .language { position: relative; overflow: hidden; padding: 1.4rem; border-radius: var(--radius-md); }
-    .language::after { content: ""; position: absolute; right: -22px; bottom: -35px; width: 100px; height: 100px; border: 1px solid rgba(40,199,183,.2); border-radius: 50%; }
-    .language h3 { font-size: 1.15rem; }
-    .language span { display: inline-flex; margin-top: .65rem; padding: .28rem .58rem; border: 1px solid rgba(40,199,183,.22); border-radius: 999px; color: var(--cyan); font-size: .72rem; font-weight: 700; }
-
-    .contact-wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; }
-    address { font-style: normal; }
-    .contact-list, .contact-visual { border-radius: var(--radius-lg); }
-    .contact-list { padding: clamp(1.5rem, 4vw, 2.5rem); }
-    .contact-item { display: grid; grid-template-columns: 46px 1fr auto; gap: .85rem; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--line); transition: transform .25s ease; }
-    .contact-item:last-child { border-bottom: 0; }
-    .contact-item:hover { transform: translateX(7px); }
-    .contact-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, rgba(91,124,250,.14), rgba(40,199,183,.06)); color: var(--cyan); font: 800 1.08rem/1 "DM Sans", sans-serif; font-variant-emoji: text; box-shadow: inset 0 0 16px rgba(255,255,255,.025); transition: border-color .25s ease, box-shadow .25s ease; }
-    .contact-item:hover .contact-icon { border-color: rgba(40,199,183,.35); box-shadow: inset 0 0 16px rgba(255,255,255,.035); }
-    .contact-item small { display: block; color: var(--muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
-    .contact-item strong { display: block; margin-top: .18rem; overflow-wrap: anywhere; font-size: .92rem; }
-    .contact-arrow { color: var(--blue); }
-    .contact-visual { position: relative; display: grid; min-height: 470px; place-items: center; overflow: hidden; background: linear-gradient(145deg, rgba(91,124,250,.14), rgba(46,155,255,.05)), var(--accent-surface-end); }
-    .ripple { position: absolute; width: 180px; height: 180px; border: 1px solid var(--line); border-radius: 50%; animation: ripple 4.5s ease-out infinite; }
-    .ripple:nth-child(2) { animation-delay: 1.5s; }
-    .ripple:nth-child(3) { animation-delay: 3s; }
-    .contact-monogram { position: relative; z-index: 2; display: grid; width: 136px; height: 136px; place-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 38%; background: linear-gradient(145deg, var(--indigo), #176fa8); color: #fff; box-shadow: 0 18px 55px rgba(0,0,0,.22); font: 800 3.2rem/1 "Syne", sans-serif; letter-spacing: -.08em; animation: contactGlow 3s ease-in-out infinite alternate; }
-    .contact-cta { position: absolute; z-index: 2; right: 1.5rem; bottom: 1.5rem; left: 1.5rem; color: var(--text-strong); text-align: center; font: 700 1.05rem/1.4 "Syne", sans-serif; }
-    footer { padding: 2.2rem 0 2.8rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .back-top { color: var(--white); font-weight: 700; }
-
-    .cursor-dot, .cursor-ring { position: fixed; z-index: 10001; top: 0; left: 0; pointer-events: none; border-radius: 50%; opacity: 0; }
-    .cursor-dot { width: 7px; height: 7px; background: var(--cyan); box-shadow: 0 2px 10px rgba(0,0,0,.3); }
-    .cursor-ring { top: 0; left: 0; width: 50px; height: 50px; border: 1px solid rgba(46,155,255,.72); transform: translate3d(-50%, -50%, 0) scale(.68); transition: transform .2s ease, border-color .2s ease; }
-    .cursor-ring.is-hovering { transform: translate3d(-50%, -50%, 0) scale(1); border-color: var(--cyan); }
-
-    /* Scroll-reveal states */
-    .js .reveal { opacity: 0; transform: translateY(32px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.8,.2,1); }
-    .js .reveal.slide-left { transform: translateX(-42px); }
-    .js .reveal.slide-right { transform: translateX(42px); }
-    .js .reveal.is-visible { opacity: 1; transform: translate(0); }
-
-    /* Keyframes */
-    @keyframes heroEnter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes navDrop { from { opacity: 0; transform: translateY(-90px); } to { opacity: 1; transform: none; } }
-    @keyframes lineFlow { to { background-position: 0 200%; } }
-    @keyframes marquee { to { transform: translateX(-50%); } }
-    @keyframes ripple { 0% { opacity: .55; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.3); } }
-    @keyframes contactGlow { to { box-shadow: 0 22px 60px rgba(0,0,0,.26); transform: translateY(-5px); } }
-    @keyframes availabilityDrift { 0%,100% { background-position: 0 50%; transform: translateY(0); } 50% { background-position: 100% 50%; transform: translateY(-2px); } }
-    @keyframes availabilityPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.2), 0 0 8px rgba(255,255,255,.28); } 70%,100% { box-shadow: 0 0 0 8px rgba(255,255,255,0), 0 0 8px rgba(255,255,255,.18); } }
-
-    /* Responsive breakpoints */
-    @media (max-width: 980px) {
-      .hero-layout { grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); column-gap: 1.5rem; }
-      .hero h1 { font-size: clamp(3rem, 6.7vw, 4.2rem); }
-      .supporting-roles { font-size: .9rem; }
-      .hero-portrait { align-self: start; margin-top: 4rem; }
-      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .about-panel, .contact-wrap { grid-template-columns: 1fr; }
-      .credentials-grid { grid-template-columns: 1fr; }
-      .education-card { min-height: 360px; }
-    }
-    @media (max-width: 820px) {
-      .menu-toggle { display: block; }
-      .nav-links { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: grid; gap: 0; padding: .75rem; border: 1px solid var(--line); border-radius: 16px; background: var(--nav-solid); box-shadow: var(--shadow); backdrop-filter: blur(18px); }
-      .js .nav-links { visibility: hidden; opacity: 0; transform: translateY(-8px); transition: opacity .22s ease, transform .22s ease, visibility .22s; }
-      .js .nav-links.is-open { visibility: visible; opacity: 1; transform: none; }
-      .nav-link { display: block; padding: .75rem; }
-      .nav-link::after { right: auto; bottom: .6rem; left: .75rem; width: 28px; }
-      .section-head { grid-template-columns: 1fr; }
-      .skill-groups { grid-template-columns: 1fr; }
-    }
-    @media (min-width: 768px) and (max-height: 820px) {
-      .hero { padding-top: calc(var(--nav-h) + 1.5rem); padding-bottom: 2rem; }
-      .hero h1 { font-size: clamp(3rem, 5.8vw, 4.7rem); }
-      .availability-tag { margin-bottom: .9rem; }
-      .role-lockup { margin-top: 1rem; }
-      .supporting-roles { font-size: .9rem; line-height: 1.5; }
-      .hero-copy { font-size: .95rem; line-height: 1.6; }
-      .hero-actions { margin-top: 1.2rem; }
-      .hero-impact { margin-top: 1.5rem; padding-top: 1rem; }
-    }
-    @media (min-width: 768px) and (max-width: 980px) {
-      .hero { min-height: auto; }
-    }
-    @media (max-width: 767px) {
-      .hero { padding-top: calc(var(--nav-h) + 2rem); }
-      .hero-layout { grid-template-columns: minmax(0, 1fr); row-gap: 1.5rem; }
-      .hero-content { display: contents; }
-      .hero-content > * { grid-column: 1; margin-bottom: 0; }
-      .hero-content > .availability-tag { justify-self: start; margin-bottom: .1rem; }
-      .hero-kicker { margin-top: 0; }
-      .hero h1 { font-size: clamp(3.3rem, 10vw, 4.5rem); }
-      .role-lockup, .hero-copy, .hero-actions { margin-top: 0; }
-      .primary-role { font-size: clamp(.8rem, 3.5vw, .92rem); }
-      .hero-portrait { grid-row: 7; justify-self: center; width: min(85%, 360px); margin-top: -.5rem; }
-      .hero-impact { margin-top: .5rem; }
-    }
-    @media (max-width: 640px) {
-      :root { --nav-h: 68px; }
-      .container { width: min(calc(100% - 28px), var(--max)); }
-      .site-header { top: 8px; padding: 0 10px; }
-      .nav { min-height: 58px; padding-left: 13px; }
-      .logo-name { display: none; }
-
-      .hero h1 { font-size: clamp(3.1rem, 11.2vw, 4.5rem); }
-      .hero h1 span { display: block; }
-      .hero-name-accent { padding-right: .1em; }
-      .hero-actions { width: 100%; gap: 1.1rem; }
-      .hero-link { font-size: .8rem; white-space: nowrap; }
-      .hero-impact { gap: .8rem; }
-      .impact-focus { grid-column: 1 / -1; }
-      .about-strengths, .projects-grid, .languages { grid-template-columns: 1fr; }
-      .education-card { min-height: 330px; }
-      .education-year strong { font-size: 3rem; }
-      .education-school { margin: 3rem 0 2rem; }
-      .certificates-heading { align-items: flex-start; flex-direction: column; gap: 1rem; }
-      .certificate-link { grid-template-columns: 92px 1fr; }
-      .certificate-mark { min-height: 100%; }
-      .certificate-copy { padding: 1.2rem; }
-      .certificate-action { grid-column: 1 / -1; min-width: 0; justify-content: space-between; padding: .9rem 1.1rem; border-top: 1px solid var(--line); border-left: 0; }
-      .timeline { padding-left: 34px; }
-      .timeline::before { left: 7px; }
-      .role::before { left: -34px; }
-      .role-head { grid-template-columns: 1fr; }
-      .role-meta { text-align: left; }
-      .role-position-head { align-items: flex-start; flex-direction: column; gap: .25rem; }
-      .contact-item { grid-template-columns: 42px 1fr; }
-      .contact-arrow { display: none; }
-      .contact-visual { min-height: 410px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-
-    /* Reduced-motion rules */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .js .reveal { opacity: 1; transform: none; }
-      .js .hero-content > *, .js .hero-portrait { opacity: 1; transform: none; animation: none; }
-      .portrait-depth { transform: none !important; transition: none; }
-      .portrait-orbit { animation: none; }
-      .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
-      .marquee-set[aria-hidden="true"] { display: none; }
-      .cursor-dot, .cursor-ring { display: none !important; }
-    }
-    @media (hover: none), (pointer: coarse) {
-      .cursor-dot, .cursor-ring { display: none !important; }
-    }
-    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-      body, a, button { cursor: none; }
-    }
-  </style>
-  <link rel="stylesheet" href="assets/assistant/assistant.css?v=3">
-  <script type="module" src="assets/assistant/widget.mjs?v=4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css?v=5">
+  <link rel="stylesheet" href="assets/assistant/assistant.css?v=4">
+  <script src="assets/js/site.js?v=2" defer></script>
+  <script type="module" src="assets/assistant/widget.mjs?v=5"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <div class="page-glow one" aria-hidden="true"></div>
-  <div class="page-glow two" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
+  <!-- Icon sprite (Lucide-style strokes) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4M22 5h-4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+  </svg>
 
-  <!-- Semantic HTML content -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="logo" href="#home" aria-label="Yazan Alzaghloul, home">
-        <span class="logo-mark">YA</span><span class="logo-name">Yazan Alzaghloul</span>
+      <a class="logo" href="#home" aria-label="Yazan Alzaghloul, back to top">
+        <span class="logo-mark" aria-hidden="true">YA</span><span class="logo-name">Yazan Alzaghloul</span>
       </a>
       <div class="nav-actions">
         <ul class="nav-links" id="nav-links">
-          <li><a class="nav-link active" href="#home">Home</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
           <li><a class="nav-link" href="#skills">Skills</a></li>
           <li><a class="nav-link" href="#experience">Experience</a></li>
@@ -658,12 +173,12 @@
           <li><a class="nav-link" href="#credentials">Credentials</a></li>
           <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
-        <a class="nav-cv interactive" href="https://yazan-alzaghloul.github.io/portfolio/Yazan-Alzaghloul-CV.pdf" download="Yazan-Alzaghloul-CV.pdf" aria-label="Download Yazan Alzaghloul's CV">CV <span aria-hidden="true">↓</span></a>
-        <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
-          <span class="theme-icon theme-sun" aria-hidden="true">☀</span>
-          <span class="theme-icon theme-moon" aria-hidden="true">☾</span>
+        <a class="nav-cv" href="https://yazan-alzaghloul.github.io/portfolio/Yazan-Alzaghloul-CV.pdf" download="Yazan-Alzaghloul-CV.pdf" aria-label="Download Yazan Alzaghloul's CV (PDF)">CV <svg class="i" aria-hidden="true"><use href="#i-download"/></svg></a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="i theme-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="i theme-moon" aria-hidden="true"><use href="#i-moon"/></svg>
         </button>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -671,526 +186,359 @@
   </header>
 
   <main id="main">
+    <!-- ============ HERO ============ -->
     <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="bg-glow" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-content">
-          <p class="availability-tag">Available for Engineering Management &amp; Lead Roles · UAE</p>
-          <p class="hero-kicker">Hello, I’m</p>
-          <h1 id="hero-title"><span>Yazan</span> <span class="hero-name-accent">Alzaghloul</span></h1>
-          <div class="role-lockup">
-            <span class="primary-role">Senior Software Engineer</span>
-            <span class="supporting-roles">Mobile Architecture · Engineering Leadership · Digital Transformation · AI-Powered Engineering</span>
+          <p class="availability-tag hero-enter" style="--i:0"><span class="status-dot" aria-hidden="true"></span>Available for Engineering Management &amp; Lead Roles · UAE</p>
+          <h1 id="hero-title"><span class="line"><span style="--i:1">Yazan</span></span><span class="line"><span class="accent" style="--i:2">Alzaghloul</span></span></h1>
+          <p class="role-line hero-enter" style="--i:3">
+            <span class="prompt" aria-hidden="true">~/</span>
+            <span class="sr-only">Senior Software Engineer, Engineering Manager, Mobile Architect, AI-Powered Engineering</span>
+            <span class="role-rotator" aria-hidden="true"><span class="is-active">Senior Software Engineer</span><span>Engineering Manager</span><span>Mobile Architect</span><span>AI-Powered Engineering</span></span>
+          </p>
+          <p class="hero-lede hero-enter" style="--i:4">I lead engineering teams and architect <strong>secure, scalable digital banking platforms</strong>, from mobile architecture and payment integrations to <strong>AI-powered engineering</strong>.</p>
+          <div class="hero-actions hero-enter" style="--i:5">
+            <a class="btn btn-primary hero-contact" href="#contact" data-availability-cta="hero">Get in touch <svg class="i icon-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn-ghost cv-download" href="https://yazan-alzaghloul.github.io/portfolio/Yazan-Alzaghloul-CV.pdf" download="Yazan-Alzaghloul-CV.pdf" aria-label="Download Yazan Alzaghloul's CV as a PDF">Download CV <svg class="i icon-down" aria-hidden="true"><use href="#i-download"/></svg></a>
           </div>
-          <p class="hero-copy">I lead engineering teams and deliver secure, scalable enterprise solutions across digital banking, mobile architecture, payment integrations, and AI-assisted engineering.</p>
-          <div class="hero-actions">
-            <a class="hero-link cv-download interactive" href="https://yazan-alzaghloul.github.io/portfolio/Yazan-Alzaghloul-CV.pdf" download="Yazan-Alzaghloul-CV.pdf" aria-label="Download Yazan Alzaghloul's CV as a PDF">
-              <span>Download CV</span><span class="hero-link-arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="hero-link hero-contact interactive" href="#contact" data-availability-cta="hero">
-              <span>Get in touch</span><span class="hero-link-arrow" aria-hidden="true">↓</span>
-            </a>
-          </div>
-          <aside class="hero-impact" aria-label="Career highlights">
-            <div class="impact-item"><strong>10</strong><span>Years of experience</span></div>
-            <div class="impact-item"><strong>5+</strong><span>Companies</span></div>
-            <div class="impact-item"><strong>20+</strong><span>Apps delivered</span></div>
-            <div class="impact-item impact-focus"><span>Engineering focus</span><strong>Enterprise applications · Technical leadership · Scalable mobile platforms</strong></div>
-          </aside>
+          <dl class="hero-metrics hero-enter" style="--i:6" aria-label="Career highlights">
+            <div class="metric"><dt class="sr-only">Years of experience</dt><dd style="margin:0"><strong data-count="10">10</strong><span aria-hidden="true">Years engineering</span></dd></div>
+            <div class="metric"><dt class="sr-only">Companies</dt><dd style="margin:0"><strong data-count="5" data-suffix="+">5+</strong><span aria-hidden="true">Companies</span></dd></div>
+            <div class="metric"><dt class="sr-only">Apps delivered</dt><dd style="margin:0"><strong data-count="20" data-suffix="+">20+</strong><span aria-hidden="true">Apps delivered</span></dd></div>
+            <div class="metric"><dt class="sr-only">Digital banking apps led</dt><dd style="margin:0"><strong data-count="5">5</strong><span aria-hidden="true">Banking apps led</span></dd></div>
+          </dl>
         </div>
-        <figure class="hero-portrait" aria-label="Professional portrait of Yazan Alzaghloul">
-          <div class="portrait-depth">
-            <div class="portrait-light" aria-hidden="true"></div>
-            <div class="portrait-orbit" aria-hidden="true"></div>
-            <div class="portrait-panel" aria-hidden="true"></div>
+
+        <figure class="hero-portrait hero-enter" style="--i:3">
+          <span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+          <div class="portrait-frame">
             <picture class="portrait-image">
-              <source type="image/webp" srcset="assets/yazan-hero-enhanced-480.webp 480w, assets/yazan-hero-enhanced-960.webp 960w, assets/yazan-hero-enhanced-1440.webp 1440w" sizes="(max-width: 440px) 75vw, (max-width: 767px) 317px, (max-width: 980px) 34vw, 414px">
-              <img src="assets/yazan-hero-enhanced-fallback.jpg" width="960" height="970" alt="Yazan Alzaghloul wearing a dark suit and tie" fetchpriority="high" decoding="async">
+              <source type="image/webp" srcset="assets/yazan-hero-enhanced-480.webp 480w, assets/yazan-hero-enhanced-960.webp 960w, assets/yazan-hero-enhanced-1440.webp 1440w" sizes="(max-width: 820px) min(380px, 90vw), 460px">
+              <img src="assets/yazan-hero-enhanced-fallback.jpg" width="960" height="970" alt="Portrait of Yazan Alzaghloul in a dark suit and tie" fetchpriority="high" decoding="async">
             </picture>
+            <figcaption class="portrait-caption" aria-hidden="true"><span>FIG. 01 — Y. ALZAGHLOUL</span><span>ABU DHABI, UAE</span></figcaption>
           </div>
+          <div class="float-badge one" aria-hidden="true"><span class="badge-icon"><svg class="i"><use href="#i-card"/></svg></span><div><strong>5 banking apps</strong><span>Retail &amp; corporate</span></div></div>
+          <div class="float-badge two" aria-hidden="true"><span class="badge-icon"><svg class="i"><use href="#i-users"/></svg></span><div><strong>Leading teams</strong><span>Since 2022</span></div></div>
         </figure>
       </div>
     </section>
 
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <div><p class="eyebrow">Professional summary</p><h2 class="section-title" id="about-title">Engineering with<br>range and rigor.</h2></div>
-          <p class="section-intro">I’m an engineering manager who stays close to the code, moving between technical direction, architecture standards, team mentorship, stakeholder collaboration, and reliable product delivery.</p>
-        </header>
-        <div class="about-panel">
-          <article class="about-lead glass reveal slide-left">
-            <div class="tenure-lockup"><div class="big-number">10<span>.</span></div><span class="tenure-label">Years of<br>experience</span></div>
-            <p>Over 10 years, my journey has progressed from building real-time communication apps and healthcare platforms to architecting regulated digital banking solutions, leading cross-functional engineering teams, and introducing AI-assisted engineering practices.</p>
-          </article>
-          <div class="about-strengths glass reveal slide-right">
-            <article class="strength"><span class="strength-index">01</span><h3>Mobile Architecture</h3><p>Flutter, Android, Kotlin, Java, Dart, clean architecture, scalable application design, and performance optimization.</p></article>
-            <article class="strength"><span class="strength-index">02</span><h3>Financial Platforms</h3><p>Digital banking, payment integrations, wallet provisioning, and secure experiences for retail and corporate customers.</p></article>
-            <article class="strength"><span class="strength-index">03</span><h3>Technical Leadership</h3><p>Cross-functional team leadership, mentorship, architecture guidance, delivery standards, and stakeholder collaboration.</p></article>
-            <article class="strength"><span class="strength-index">04</span><h3>AI-Powered Engineering</h3><p>AI agents, LLMs, OpenAI API, MCP, and an AI-Assisted Development Lifecycle (ADLC) spanning requirements through release.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <div><p class="eyebrow">Technical expertise</p><h2 class="section-title" id="skills-title">A broad, connected<br>engineering toolkit.</h2></div>
-          <p class="section-intro">Technologies and practices are grouped exactly by the expertise represented in the CV. No artificial proficiency percentages, only the tools, systems, and disciplines used.</p>
-        </header>
-        <div class="skill-groups">
-          <article class="skill-group glass reveal" style="--group-accent:var(--cyan)"><h3>Mobile Engineering &amp; Development</h3><div class="chip-cloud"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Android</span><span class="chip">Kotlin</span><span class="chip">Java</span><span class="chip">iOS fundamentals</span><span class="chip">Cross-Platform Mobile Development</span><span class="chip">Mobile Application Architecture</span><span class="chip">Performance Optimization</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--blue)"><h3>Software Architecture &amp; Design</h3><div class="chip-cloud"><span class="chip">Clean Architecture</span><span class="chip">MVVM</span><span class="chip">MVP</span><span class="chip">MVC</span><span class="chip">SOLID Principles</span><span class="chip">Design Patterns</span><span class="chip">Object-Oriented Design</span><span class="chip">Scalable Application Architecture</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--amber)"><h3>FinTech &amp; Digital Banking</h3><div class="chip-cloud"><span class="chip">Digital Banking Platforms</span><span class="chip">Payment Integrations</span><span class="chip">Apple Wallet</span><span class="chip">Google Wallet</span><span class="chip">Samsung Wallet</span><span class="chip">Secure Payment Experiences</span><span class="chip">Financial Services Applications</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--indigo)"><h3>AI-Powered Engineering</h3><div class="chip-cloud"><span class="chip">Large Language Models</span><span class="chip">AI Agents</span><span class="chip">AI-Assisted Development</span><span class="chip">GitHub Copilot</span><span class="chip">OpenAI API</span><span class="chip">Model Context Protocol</span><span class="chip">AI-Assisted Development Lifecycle (ADLC)</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--cyan)"><h3>DevOps, CI/CD &amp; Engineering Tools</h3><div class="chip-cloud"><span class="chip">Azure DevOps</span><span class="chip">CI/CD Pipelines</span><span class="chip">Git</span><span class="chip">SonarCloud</span><span class="chip">Automated Deployment</span><span class="chip">Code Quality Management</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--blue)"><h3>Testing &amp; Quality Engineering</h3><div class="chip-cloud"><span class="chip">Espresso UI Testing</span><span class="chip">Unit Testing</span><span class="chip">System Integration Testing</span><span class="chip">Test Automation</span><span class="chip">Code Quality Analysis</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--amber)"><h3>Data &amp; Backend Integration</h3><div class="chip-cloud"><span class="chip">MySQL</span><span class="chip">Microsoft SQL Server</span><span class="chip">REST API Integration</span><span class="chip">Enterprise System Integration</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--indigo)"><h3>Analytics &amp; User Engagement</h3><div class="chip-cloud"><span class="chip">Firebase Analytics</span><span class="chip">Google Analytics</span><span class="chip">CleverTap</span><span class="chip">User Behavior Analytics</span><span class="chip">Engagement Optimization</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--cyan)"><h3>Agile Delivery &amp; Collaboration</h3><div class="chip-cloud"><span class="chip">Jira</span><span class="chip">Agile Methodologies</span><span class="chip">Scrum</span><span class="chip">Version Control</span><span class="chip">Sprint Planning</span><span class="chip">Cross-Functional Collaboration</span></div></article>
-          <article class="skill-group glass reveal" style="--group-accent:var(--blue)"><h3>Real-Time &amp; Open Source</h3><div class="chip-cloud"><span class="chip">XMPP</span><span class="chip">SIP</span><span class="chip">Smack XMPP Client Library</span><span class="chip">Kamailio SIP Server</span><span class="chip">Linphone VoIP Platform</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <div><p class="eyebrow">Professional experience</p><h2 class="section-title" id="experience-title">From mobile craft<br>to platform leadership.</h2></div>
-          <p class="section-intro">A reverse-chronological path through digital banking, arts and culture, cross-platform products, healthcare, and telecommunications.</p>
-        </header>
-        <div class="timeline">
-          <article class="role glass reveal slide-left" style="--role-accent:var(--blue)">
-            <section class="role-position" aria-labelledby="finance-manager-title">
-              <header class="role-head"><div><p class="role-company"><a class="company-link interactive" href="https://www.financehouse.ae/en/home/" target="_blank" rel="noreferrer">Finance House <span aria-hidden="true">↗</span></a></p><h3 id="finance-manager-title">Engineering Manager</h3></div><p class="role-meta"><span>Dec 2024 - Present</span><span>Abu Dhabi, UAE</span></p></header>
-              <ul><li>Lead a cross-functional engineering team, owning technical direction, architecture guidance, engineering standards, team development, and delivery across multiple digital banking products.</li><li>Lead architecture and delivery for five retail and corporate digital banking applications, ensuring scalability, security, performance, maintainability, and high-quality customer experiences.</li><li>Provide technical leadership, mentorship, and engineering governance across mobile and backend teams while establishing consistent architecture and delivery standards.</li><li>Architect and implement a multi-agent AI-Assisted Development Lifecycle (ADLC) framework spanning requirements, development, testing, documentation, and release.</li><li>Drive engineering productivity through AI-assisted development, automation, modern development practices, and continuous improvement.</li><li>Align engineering execution with business objectives and regulatory requirements across product, security, compliance, business, and technology teams.</li><li>Support technical planning, solution architecture, delivery prioritization, risk management, and cross-team coordination for strategic digital banking initiatives.</li></ul>
-            </section>
-            <section class="role-position" aria-labelledby="finance-mobile-lead-title">
-              <header class="role-head"><h3 id="finance-mobile-lead-title">Mobile Team Leader</h3><p class="role-meta"><span>Sep 2022 - Dec 2024</span></p></header>
-              <ul><li>Led mobile engineering delivery across retail and corporate digital banking applications, providing technical direction, architecture guidance, code quality standards, and mentorship.</li><li>Led the design, development, and delivery of secure, scalable mobile banking applications using Flutter.</li><li>Defined mobile architecture standards and engineering practices to improve maintainability, performance, scalability, and code quality.</li><li>Implemented Apple Wallet, Google Wallet, and Samsung Wallet provisioning for secure tokenized payment experiences.</li><li>Contributed to Aani instant payments and other regulated banking integrations across Finance House digital channels.</li><li>Mentored mobile engineers, supported technical decisions, reviewed implementation approaches, and promoted consistent engineering practices.</li></ul>
-            </section>
-            <div class="role-tags"><span class="chip">Engineering Management</span><span class="chip">Digital Banking</span><span class="chip">Mobile Architecture</span><span class="chip">AI Agents</span><span class="chip">Digital Wallets</span><span class="chip">Aani</span></div>
-          </article>
-          <article class="role glass reveal slide-right" style="--role-accent:var(--cyan)">
-            <header class="role-head"><div><p class="role-company"><a class="company-link interactive" href="https://dubaiappstudio.ae/" target="_blank" rel="noreferrer">DA Studio <span aria-hidden="true">↗</span></a></p><h3>Software Engineer</h3></div><p class="role-meta"><span>Dec 2021 - Sep 2022</span><span>Dubai, UAE</span></p></header>
-            <ul><li>Delivered the Abu Dhabi Art mobile application for the Abu Dhabi Ministry of Culture and Tourism, leading requirement gathering, design, and implementation.</li><li>Developed features for the Art Dubai mobile application.</li><li>Enhanced features for a large-scale social and messaging application serving users in France.</li></ul>
-            <div class="role-tags"><span class="chip">Abu Dhabi Art</span><span class="chip">Art Dubai</span><span class="chip">Mobile Apps</span><span class="chip">Social &amp; Messaging</span></div>
-          </article>
-          <article class="role glass reveal slide-left" style="--role-accent:var(--amber)">
-            <header class="role-head"><div><p class="role-company"><a class="company-link interactive" href="https://diwink.com/" target="_blank" rel="noreferrer">Digital Wink <span aria-hidden="true">↗</span></a></p><h3>Flutter Developer</h3></div><p class="role-meta"><span>Full-time: Dec 2020 - Nov 2021</span><span>Part-time: Dec 2021 - Sep 2022</span><span>Mersin, Turkey</span></p></header>
-            <ul><li>Developed multiple cross-platform applications using Flutter with clean architecture and efficient state management.</li><li>Integrated Visa, MasterCard, and Mada payment gateways and improved map-based routing algorithms.</li></ul>
-            <div class="role-tags"><span class="chip">Flutter</span><span class="chip">Clean Architecture</span><span class="chip">Payments</span><span class="chip">Routing</span></div>
-          </article>
-          <article class="role glass reveal slide-right" style="--role-accent:var(--indigo)">
-            <header class="role-head"><div><p class="role-company"><a class="company-link interactive" href="https://www.medicus.ai/" target="_blank" rel="noreferrer">Medicus AI <span aria-hidden="true">↗</span></a></p><h3>Android Developer</h3></div><p class="role-meta"><span>Nov 2019 - Nov 2020</span><span>Vienna, Austria</span></p></header>
-            <ul><li>Designed and developed new modules for healthcare applications in partnership with Roche and Central Health.</li><li>Eliminated memory leaks (a 100% reduction) and optimized application reliability and user experience.</li></ul>
-            <div class="role-tags"><span class="chip">Android</span><span class="chip">Healthcare</span><span class="chip">Performance</span><span class="chip">Reliability</span></div>
-          </article>
-          <article class="role glass reveal slide-left" style="--role-accent:var(--blue)">
-            <header class="role-head"><div><p class="role-company"><a class="company-link interactive" href="https://www.syriatel.sy/" target="_blank" rel="noreferrer">Syriatel Mobile Telecom <span aria-hidden="true">↗</span></a></p><h3>Mobile Application Developer</h3></div><p class="role-meta"><span>Sep 2016 - Oct 2019</span><span>Damascus, Syria</span></p></header>
-            <ul><li>Developed Syria’s first social and chat applications with voice and video calling.</li><li>Led a small engineering team to deliver enhanced versions of enterprise applications.</li></ul>
-            <div class="role-tags"><span class="chip">Mobile</span><span class="chip">XMPP</span><span class="chip">SIP</span><span class="chip">Voice &amp; Video</span><span class="chip">Team Leadership</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <div><p class="eyebrow">Key projects</p><h2 class="section-title" id="projects-title">Products with<br>real-world purpose.</h2></div>
-          <p class="section-intro">Eight named applications spanning retail and corporate banking, investment, arts and culture, AI-driven services, and encrypted communications.</p>
-        </header>
-        <div class="projects-grid">
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">💳</div><h3>FH Personal App</h3><p>Digital banking for card management, biometric authentication, local and international transfers, bill payments, Aani instant payments, and Apple Wallet integration.</p><strong class="project-impact">Served thousands of active users across the UAE.</strong><div class="role-tags"><span class="chip">Card Management</span><span class="chip">Biometric Authentication</span><span class="chip">Aani Payments</span><span class="chip">Bill Payments</span><span class="chip">Apple Wallet</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/search?q=FH%20Personal%20App&amp;c=apps&amp;hl=en" target="_blank" rel="noreferrer" aria-label="FH Personal App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/fh-personal/id1563416308" target="_blank" rel="noreferrer" aria-label="FH Personal App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">🏢</div><h3>FH Business App</h3><p>Corporate digital banking for UAE businesses, with multi-currency deposits, local and international transfers, WPS payroll, and role-based access.</p><div class="role-tags"><span class="chip">Multi-Currency Deposits</span><span class="chip">International Transfers</span><span class="chip">WPS Payroll</span><span class="chip">Role-Based Access</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/apps/details?id=com.fh.financehousebusiness.android.app&amp;hl=en" target="_blank" rel="noreferrer" aria-label="FH Business App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/finance-house-business/id1538849624" target="_blank" rel="noreferrer" aria-label="FH Business App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">📈</div><h3>investnation App</h3><p>Retail investment platform with Saver, Flex, and Growth portfolio options, licensed by ESCA under Finance House Group.</p><strong class="project-impact">Investing from AED 250 · Projected returns up to 7% annually.</strong><div class="role-tags"><span class="chip">Retail Investment</span><span class="chip">Saver · Flex · Growth</span><span class="chip">ESCA Licensed</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/search?q=investnation&amp;c=apps&amp;hl=en" target="_blank" rel="noreferrer" aria-label="investnation App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/investnation/id6465605280" target="_blank" rel="noreferrer" aria-label="investnation App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">🏦</div><h3>Dhabi App</h3><p>Mobile-first banking for personal and business customers, supporting account opening, savings, fixed deposits, international transfers, and global payments.</p><div class="role-tags"><span class="chip">Account Opening</span><span class="chip">Savings &amp; Fixed Deposits</span><span class="chip">International Transfers</span><span class="chip">Global Payments</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/apps/details?id=com.dhabi.digital&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Dhabi App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/dhabi/id6451184658" target="_blank" rel="noreferrer" aria-label="Dhabi App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">🎨</div><h3>Abu Dhabi Art App</h3><p>Official DCT Abu Dhabi platform for exploring art fair highlights, artworks, exhibitions, and Abu Dhabi’s year-round visual arts program.</p><div class="role-tags"><span class="chip">Art Fair Highlights</span><span class="chip">Artworks &amp; Exhibitions</span><span class="chip">DCT Abu Dhabi</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/apps/details?id=ae.dctabudhabi.abudhabiart&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Abu Dhabi Art App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/abu-dhabi-art-fair/id1645033258" target="_blank" rel="noreferrer" aria-label="Abu Dhabi Art App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">🖼️</div><h3>Art Dubai Apps</h3><p>Official apps for the international art fair, giving visitors access to galleries, artworks, event schedules, interactive maps, and VIP program experiences.</p><div class="role-tags"><span class="chip">Galleries &amp; Artworks</span><span class="chip">Event Schedules</span><span class="chip">Interactive Maps</span><span class="chip">VIP Program</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/apps/details?id=com.artdubai&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Art Dubai App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/au/app/art-dubai/id1553665984" target="_blank" rel="noreferrer" aria-label="Art Dubai App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">🧺</div><h3>WashCloud App</h3><p>AI-driven laundry platform featuring smart delivery tracking and digital customer experience capabilities.</p><div class="role-tags"><span class="chip">AI-Driven Platform</span><span class="chip">Smart Delivery Tracking</span><span class="chip">Digital Customer Experience</span></div><div class="project-links"><a class="store-link interactive" style="--store-color:var(--cyan)" href="https://play.google.com/store/apps/details?id=net.washcloud&amp;hl=en" target="_blank" rel="noreferrer" aria-label="WashCloud App on Google Play">Google Play</a><a class="store-link interactive" style="--store-color:var(--blue)" href="https://apps.apple.com/us/app/washcloud/id1614625033" target="_blank" rel="noreferrer" aria-label="WashCloud App on the App Store">App Store</a></div></article>
-          <article class="project-card glass reveal"><div class="project-icon" aria-hidden="true">💬</div><h3>Link App</h3><p>One of the first Syrian chat applications, providing encrypted messaging and real-time voice and video communication.</p><div class="role-tags"><span class="chip">Encrypted Messaging</span><span class="chip">Voice Calling</span><span class="chip">Video Calling</span><span class="chip">Real-Time Communication</span></div></article>
-        </div>
-      </div>
-    </section>
-
+    <!-- ============ COMPANIES ============ -->
     <section class="marquee-section" aria-labelledby="marquee-title">
       <p class="marquee-label" id="marquee-title">Companies, partners &amp; platforms across the journey</p>
       <div class="marquee">
         <div class="marquee-track">
-          <div class="marquee-set"><a class="marquee-item interactive" href="https://www.financehouse.ae/en/home/" target="_blank" rel="noreferrer">Finance House</a><a class="marquee-item interactive" href="https://dubaiappstudio.ae/" target="_blank" rel="noreferrer">DA Studio</a><a class="marquee-item interactive" href="https://diwink.com/" target="_blank" rel="noreferrer">Digital Wink</a><a class="marquee-item interactive" href="https://www.medicus.ai/" target="_blank" rel="noreferrer">Medicus AI</a><a class="marquee-item interactive" href="https://www.syriatel.sy/" target="_blank" rel="noreferrer">Syriatel</a><span class="marquee-item">Roche</span><span class="marquee-item">Central Health</span><span class="marquee-item">DCT Abu Dhabi</span><span class="marquee-item">Art Dubai</span></div>
+          <div class="marquee-set"><a class="marquee-item" href="https://www.financehouse.ae/en/home/" target="_blank" rel="noreferrer">Finance House</a><a class="marquee-item" href="https://dubaiappstudio.ae/" target="_blank" rel="noreferrer">DA Studio</a><a class="marquee-item" href="https://diwink.com/" target="_blank" rel="noreferrer">Digital Wink</a><a class="marquee-item" href="https://www.medicus.ai/" target="_blank" rel="noreferrer">Medicus AI</a><a class="marquee-item" href="https://www.syriatel.sy/" target="_blank" rel="noreferrer">Syriatel</a><span class="marquee-item">Roche</span><span class="marquee-item">Central Health</span><span class="marquee-item">DCT Abu Dhabi</span><span class="marquee-item">Art Dubai</span></div>
           <div class="marquee-set" aria-hidden="true"><span class="marquee-item">Finance House</span><span class="marquee-item">DA Studio</span><span class="marquee-item">Digital Wink</span><span class="marquee-item">Medicus AI</span><span class="marquee-item">Syriatel</span><span class="marquee-item">Roche</span><span class="marquee-item">Central Health</span><span class="marquee-item">DCT Abu Dhabi</span><span class="marquee-item">Art Dubai</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="credentials" aria-labelledby="credentials-title">
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about" aria-labelledby="about-title">
       <div class="container">
-        <header class="section-head reveal"><div><p class="eyebrow">Education &amp; recognition</p><h2 class="section-title" id="credentials-title">Foundations and<br>earned recognition.</h2></div><p class="section-intro">Software engineering education, verified AI certificates, four Finance House recognitions, and language proficiency.</p></header>
-        <div class="credentials-grid">
-          <article class="credential-card education-card glass reveal slide-left">
-            <div class="education-head"><span class="credential-label">Education</span><time class="education-year" datetime="2018"><span>Year</span><strong>2018</strong></time></div>
-            <div class="education-school"><h3>Damascus University</h3><p>Faculty of Information Technology</p></div>
-            <div class="education-degree"><span>Field of study</span><strong>Software Engineering</strong></div>
+        <header class="section-head reveal">
+          <div><p class="eyebrow"><span class="eyebrow-index">01</span>About</p><h2 class="section-title" id="about-title">Engineering with range <em>and rigor.</em></h2></div>
+          <p class="section-intro">I’m an engineering manager who stays close to the code, moving between technical direction, architecture standards, team mentorship, stakeholder collaboration, and reliable product delivery.</p>
+        </header>
+        <div class="about-grid">
+          <article class="about-story card reveal">
+            <p class="about-quote">From real-time chat apps and healthcare platforms <span>to regulated digital banking, cross-functional teams, and AI-powered engineering practices.</span></p>
+            <div>
+              <div class="tenure"><strong>10<sup>+</sup></strong><span>Years of<br>experience</span></div>
+              <p class="body" style="margin-top:1.25rem">Over 10 years, my journey has progressed from building real-time communication apps and healthcare platforms to architecting regulated digital banking solutions, leading cross-functional engineering teams, and introducing AI-powered engineering practices.</p>
+            </div>
           </article>
-          <article class="credential-card glass reveal slide-right"><span class="credential-label">Awards</span><ul class="award-list"><li class="award"><span class="award-year">2025</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Development of the new investnation Credit Card</p></div></li><li class="award"><span class="award-year">2024</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Contribution to Oracle Cloud Infrastructure migration</p></div></li><li class="award"><span class="award-year">2023</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Outstanding performance in digital delivery</p></div></li><li class="award"><span class="award-year">2023</span><div><h3>NPSS Project Completion Award</h3><p>Finance House</p></div></li></ul></article>
-        </div>
-        <section class="certificates glass reveal" aria-labelledby="certificates-title">
-          <div class="certificates-heading">
-            <div><span class="credential-label">Professional learning</span><h3 id="certificates-title">Selected certificates</h3><p class="certificates-intro">This selection highlights my most important professional certificates. View the complete collection on LinkedIn.</p></div>
-            <a class="certificates-all interactive" href="https://www.linkedin.com/in/yazan-alzaghloul/details/certifications/" target="_blank" rel="me noreferrer" data-social-profile="linkedin">View all on LinkedIn <span aria-hidden="true">↗</span></a>
+          <div class="strengths">
+            <article class="strength card card-hover reveal" style="--d:0ms"><div class="strength-head"><span class="strength-icon" aria-hidden="true"><svg class="i"><use href="#i-layers"/></svg></span><span class="strength-index">01</span></div><h3>Mobile Architecture</h3><p>Flutter, Android, Kotlin, Java, Dart, clean architecture, scalable application design, and performance optimization.</p></article>
+            <article class="strength card card-hover reveal" style="--d:80ms"><div class="strength-head"><span class="strength-icon" aria-hidden="true"><svg class="i"><use href="#i-card"/></svg></span><span class="strength-index">02</span></div><h3>Financial Platforms</h3><p>Digital banking, payment integrations, wallet provisioning, and secure experiences for retail and corporate customers.</p></article>
+            <article class="strength card card-hover reveal" style="--d:160ms"><div class="strength-head"><span class="strength-icon" aria-hidden="true"><svg class="i"><use href="#i-users"/></svg></span><span class="strength-index">03</span></div><h3>Technical Leadership</h3><p>Cross-functional team leadership, mentorship, architecture guidance, delivery standards, and stakeholder collaboration.</p></article>
+            <article class="strength card card-hover reveal" style="--d:240ms"><div class="strength-head"><span class="strength-icon" aria-hidden="true"><svg class="i"><use href="#i-sparkles"/></svg></span><span class="strength-index">04</span></div><h3>AI-Powered Engineering</h3><p>AI agents, LLMs, OpenAI API, MCP, and an AI-Powered Development Lifecycle (ADLC) spanning requirements through release.</p></article>
           </div>
-          <a class="certificate-link interactive" href="https://www.linkedin.com/learning/certificates/6bc81bd73f29fee19c9df495cdd3cd81b585681410dd6b0318bf75e38366972f?u=86013394" target="_blank" rel="noreferrer" data-certificate-name="Claude 101 by Anthropic" data-certificate-issuer="Anthropic">
-            <span class="certificate-mark" aria-hidden="true"><strong>AI</strong></span>
-            <div class="certificate-copy"><span class="certificate-provider">Anthropic</span><h4>Claude 101 by Anthropic</h4><p class="certificate-skills"><strong>Skills covered:</strong> Artificial Intelligence (AI), Anthropic Claude, and AI literacy.</p></div>
-            <span class="certificate-action">View certificate <span aria-hidden="true">↗</span></span>
-          </a>
-          <a class="certificate-link interactive" href="https://www.linkedin.com/learning/certificates/7e4a9269d451a7e90ac275330ee86e6c324ac28a0868662d33d1ffef9db2ea98?u=86013394" target="_blank" rel="noreferrer" data-certificate-name="AI Fluency: Framework and Foundations by Anthropic" data-certificate-issuer="Anthropic">
-            <span class="certificate-mark" aria-hidden="true"><strong>AI</strong></span>
-            <div class="certificate-copy"><span class="certificate-provider">Anthropic</span><h4>AI Fluency: Framework and Foundations by Anthropic</h4><p class="certificate-skills"><strong>Skills covered:</strong> Artificial intelligence (AI) and AI Fluency.</p></div>
-            <span class="certificate-action">View certificate <span aria-hidden="true">↗</span></span>
-          </a>
-        </section>
-        <div class="languages" aria-label="Languages">
-          <article class="language glass reveal"><h3>Arabic</h3><span>Native</span></article>
-          <article class="language glass reveal"><h3>English</h3><span>Professional working proficiency</span></article>
+        </div>
+        <ol class="career-arc card reveal" aria-label="Career progression">
+          <li class="arc-step"><time datetime="2016">2016</time><strong>Mobile Application Developer</strong><span>Syriatel</span></li>
+          <li class="arc-step"><time datetime="2019">2019</time><strong>Android Developer</strong><span>Medicus AI</span></li>
+          <li class="arc-step"><time datetime="2020">2020</time><strong>Flutter Developer</strong><span>Digital Wink</span></li>
+          <li class="arc-step"><time datetime="2021">2021</time><strong>Software Engineer</strong><span>DA Studio</span></li>
+          <li class="arc-step"><time datetime="2022">2022</time><strong>Mobile Team Leader</strong><span>Finance House</span></li>
+          <li class="arc-step"><time datetime="2024">2024</time><strong>Engineering Manager</strong><span>Finance House</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div><p class="eyebrow"><span class="eyebrow-index">02</span>Technical expertise</p><h2 class="section-title" id="skills-title">A broad, connected <em>engineering toolkit.</em></h2></div>
+          <p class="section-intro">Grouped exactly by the expertise represented in the CV. No artificial proficiency percentages, only the tools, systems, and disciplines used.</p>
+        </header>
+
+        <div class="core-stack reveal" aria-label="Core stack">
+          <span class="label">Core stack</span>
+          <span class="core-chip"><i style="--c:#54c5f8" aria-hidden="true"></i>Flutter</span>
+          <span class="core-chip"><i style="--c:#0175c2" aria-hidden="true"></i>Dart</span>
+          <span class="core-chip"><i style="--c:#a97bff" aria-hidden="true"></i>Kotlin</span>
+          <span class="core-chip"><i style="--c:#3ddc84" aria-hidden="true"></i>Android</span>
+          <span class="core-chip"><i style="--c:#e76f00" aria-hidden="true"></i>Java</span>
+          <span class="core-chip"><i aria-hidden="true"></i>Clean Architecture</span>
+          <span class="core-chip"><i style="--c:#0078d4" aria-hidden="true"></i>Azure DevOps</span>
+        </div>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter skills by domain" data-filter-target="skills">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All<span class="count">10</span></button>
+          <button class="filter-btn" type="button" data-filter="mobile" aria-pressed="false">Mobile &amp; architecture<span class="count">2</span></button>
+          <button class="filter-btn" type="button" data-filter="fintech" aria-pressed="false">FinTech<span class="count">1</span></button>
+          <button class="filter-btn" type="button" data-filter="ai" aria-pressed="false">AI<span class="count">1</span></button>
+          <button class="filter-btn" type="button" data-filter="delivery" aria-pressed="false">Delivery &amp; quality<span class="count">3</span></button>
+          <button class="filter-btn" type="button" data-filter="data" aria-pressed="false">Data &amp; integration<span class="count">3</span></button>
+        </div>
+        <p class="filter-status sr-only" role="status" aria-live="polite" data-filter-status="skills"></p>
+
+        <div class="skill-groups" data-filter-list="skills">
+          <article class="skill-group card card-hover reveal wide" data-tags="mobile"><div class="skill-group-head"><div><span class="domain">Mobile</span><h3>Mobile Engineering &amp; Development</h3></div><span class="count">09</span></div><div class="chip-cloud"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Android</span><span class="chip">Kotlin</span><span class="chip">Java</span><span class="chip">iOS fundamentals</span><span class="chip">Cross-Platform Mobile Development</span><span class="chip">Mobile Application Architecture</span><span class="chip">Performance Optimization</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="mobile"><div class="skill-group-head"><div><span class="domain">Architecture</span><h3>Software Architecture &amp; Design</h3></div><span class="count">08</span></div><div class="chip-cloud"><span class="chip">Clean Architecture</span><span class="chip">MVVM</span><span class="chip">MVP</span><span class="chip">MVC</span><span class="chip">SOLID Principles</span><span class="chip">Design Patterns</span><span class="chip">Object-Oriented Design</span><span class="chip">Scalable Application Architecture</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="fintech"><div class="skill-group-head"><div><span class="domain">FinTech</span><h3>FinTech &amp; Digital Banking</h3></div><span class="count">07</span></div><div class="chip-cloud"><span class="chip">Digital Banking Platforms</span><span class="chip">Payment Integrations</span><span class="chip">Apple Wallet</span><span class="chip">Google Wallet</span><span class="chip">Samsung Wallet</span><span class="chip">Secure Payment Experiences</span><span class="chip">Financial Services Applications</span></div></article>
+          <article class="skill-group card card-hover reveal wide" data-tags="ai"><div class="skill-group-head"><div><span class="domain">AI</span><h3>AI-Powered Engineering</h3></div><span class="count">06</span></div><div class="chip-cloud"><span class="chip">Large Language Models</span><span class="chip">AI Agents</span><span class="chip">GitHub Copilot</span><span class="chip">OpenAI API</span><span class="chip">Model Context Protocol</span><span class="chip">AI-Powered Development Lifecycle (ADLC)</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="delivery"><div class="skill-group-head"><div><span class="domain">Delivery</span><h3>DevOps, CI/CD &amp; Engineering Tools</h3></div><span class="count">06</span></div><div class="chip-cloud"><span class="chip">Azure DevOps</span><span class="chip">CI/CD Pipelines</span><span class="chip">Git</span><span class="chip">SonarCloud</span><span class="chip">Automated Deployment</span><span class="chip">Code Quality Management</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="delivery"><div class="skill-group-head"><div><span class="domain">Quality</span><h3>Testing &amp; Quality Engineering</h3></div><span class="count">05</span></div><div class="chip-cloud"><span class="chip">Espresso UI Testing</span><span class="chip">Unit Testing</span><span class="chip">System Integration Testing</span><span class="chip">Test Automation</span><span class="chip">Code Quality Analysis</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="delivery"><div class="skill-group-head"><div><span class="domain">Delivery</span><h3>Agile Delivery &amp; Collaboration</h3></div><span class="count">06</span></div><div class="chip-cloud"><span class="chip">Jira</span><span class="chip">Agile Methodologies</span><span class="chip">Scrum</span><span class="chip">Version Control</span><span class="chip">Sprint Planning</span><span class="chip">Cross-Functional Collaboration</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="data"><div class="skill-group-head"><div><span class="domain">Data</span><h3>Data &amp; Backend Integration</h3></div><span class="count">04</span></div><div class="chip-cloud"><span class="chip">MySQL</span><span class="chip">Microsoft SQL Server</span><span class="chip">REST API Integration</span><span class="chip">Enterprise System Integration</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="data"><div class="skill-group-head"><div><span class="domain">Analytics</span><h3>Analytics &amp; User Engagement</h3></div><span class="count">05</span></div><div class="chip-cloud"><span class="chip">Firebase Analytics</span><span class="chip">Google Analytics</span><span class="chip">CleverTap</span><span class="chip">User Behavior Analytics</span><span class="chip">Engagement Optimization</span></div></article>
+          <article class="skill-group card card-hover reveal" data-tags="data"><div class="skill-group-head"><div><span class="domain">Real-time</span><h3>Real-Time &amp; Open Source</h3></div><span class="count">05</span></div><div class="chip-cloud"><span class="chip">XMPP</span><span class="chip">SIP</span><span class="chip">Smack XMPP Client Library</span><span class="chip">Kamailio SIP Server</span><span class="chip">Linphone VoIP Platform</span></div></article>
         </div>
       </div>
     </section>
 
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div><p class="eyebrow"><span class="eyebrow-index">03</span>Experience</p><h2 class="section-title" id="experience-title">From mobile craft <em>to platform leadership.</em></h2></div>
+          <p class="section-intro">A reverse-chronological path through digital banking, arts and culture, cross-platform products, healthcare, and telecommunications.</p>
+        </header>
+        <ol class="timeline">
+          <li class="role current reveal">
+            <div class="role-rail"><time>Sep 2022 — Present</time><span>Abu Dhabi, UAE</span></div>
+            <article class="role-card card">
+              <p class="role-company"><a class="company-link" href="https://www.financehouse.ae/en/home/" target="_blank" rel="noreferrer">Finance House <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></p>
+              <section class="role-position" aria-labelledby="finance-manager-title">
+                <p class="promo"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg>Promoted · Dec 2024</p>
+                <div class="role-head"><h3 id="finance-manager-title">Engineering Manager</h3><p class="role-meta"><span>Dec 2024 – Present</span></p></div>
+                <p class="role-summary">Lead a cross-functional engineering team, owning technical direction, architecture guidance, engineering standards, team development, and delivery across multiple digital banking products.</p>
+                <details class="role-more">
+                  <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span class="more">Show 6 more responsibilities</span><span class="less">Show less</span></summary>
+                  <ul class="role-list"><li>Lead architecture and delivery for five retail and corporate digital banking applications, ensuring scalability, security, performance, maintainability, and high-quality customer experiences.</li><li>Provide technical leadership, mentorship, and engineering governance across mobile and backend teams while establishing consistent architecture and delivery standards.</li><li>Architect and implement a multi-agent AI-Powered Development Lifecycle (ADLC) framework spanning requirements, development, testing, documentation, and release.</li><li>Drive engineering productivity through AI-powered development, automation, modern development practices, and continuous improvement.</li><li>Align engineering execution with business objectives and regulatory requirements across product, security, compliance, business, and technology teams.</li><li>Support technical planning, solution architecture, delivery prioritization, risk management, and cross-team coordination for strategic digital banking initiatives.</li></ul>
+                </details>
+              </section>
+              <section class="role-position" aria-labelledby="finance-mobile-lead-title">
+                <div class="role-head"><h3 id="finance-mobile-lead-title">Mobile Team Leader</h3><p class="role-meta"><span>Sep 2022 – Dec 2024</span></p></div>
+                <p class="role-summary">Led mobile engineering delivery across retail and corporate digital banking applications, providing technical direction, architecture guidance, code quality standards, and mentorship.</p>
+                <details class="role-more">
+                  <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span class="more">Show 5 more responsibilities</span><span class="less">Show less</span></summary>
+                  <ul class="role-list"><li>Led the design, development, and delivery of secure, scalable mobile banking applications using Flutter.</li><li>Defined mobile architecture standards and engineering practices to improve maintainability, performance, scalability, and code quality.</li><li>Implemented Apple Wallet, Google Wallet, and Samsung Wallet provisioning for secure tokenized payment experiences.</li><li>Contributed to Aani instant payments and other regulated banking integrations across Finance House digital channels.</li><li>Mentored mobile engineers, supported technical decisions, reviewed implementation approaches, and promoted consistent engineering practices.</li></ul>
+                </details>
+              </section>
+              <div class="tag-row"><span class="tag">Engineering Management</span><span class="tag">Digital Banking</span><span class="tag">Mobile Architecture</span><span class="tag">AI Agents</span><span class="tag">Digital Wallets</span><span class="tag">Aani</span></div>
+            </article>
+          </li>
+          <li class="role reveal">
+            <div class="role-rail"><time>Dec 2021 — Sep 2022</time><span>Dubai, UAE</span></div>
+            <article class="role-card card">
+              <div class="role-head"><div><p class="role-company"><a class="company-link" href="https://dubaiappstudio.ae/" target="_blank" rel="noreferrer">DA Studio <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></p><h3>Software Engineer</h3></div></div>
+              <ul class="role-list"><li>Delivered the Abu Dhabi Art mobile application for the Abu Dhabi Ministry of Culture and Tourism, leading requirement gathering, design, and implementation.</li><li>Developed features for the Art Dubai mobile application.</li><li>Enhanced features for a large-scale social and messaging application serving users in France.</li></ul>
+              <div class="tag-row"><span class="tag">Abu Dhabi Art</span><span class="tag">Art Dubai</span><span class="tag">Mobile Apps</span><span class="tag">Social &amp; Messaging</span></div>
+            </article>
+          </li>
+          <li class="role reveal">
+            <div class="role-rail"><time>Dec 2020 — Sep 2022</time><span>Mersin, Turkey</span></div>
+            <article class="role-card card">
+              <div class="role-head"><div><p class="role-company"><a class="company-link" href="https://diwink.com/" target="_blank" rel="noreferrer">Digital Wink <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></p><h3>Flutter Developer</h3></div><p class="role-meta"><span>Full-time: Dec 2020 – Nov 2021</span><span>Part-time: Dec 2021 – Sep 2022</span></p></div>
+              <ul class="role-list"><li>Developed multiple cross-platform applications using Flutter with clean architecture and efficient state management.</li><li>Integrated Visa, MasterCard, and Mada payment gateways and improved map-based routing algorithms.</li></ul>
+              <div class="tag-row"><span class="tag">Flutter</span><span class="tag">Clean Architecture</span><span class="tag">Payments</span><span class="tag">Routing</span></div>
+            </article>
+          </li>
+          <li class="role reveal">
+            <div class="role-rail"><time>Nov 2019 — Nov 2020</time><span>Vienna, Austria</span></div>
+            <article class="role-card card">
+              <div class="role-head"><div><p class="role-company"><a class="company-link" href="https://www.medicus.ai/" target="_blank" rel="noreferrer">Medicus AI <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></p><h3>Android Developer</h3></div></div>
+              <ul class="role-list"><li>Designed and developed new modules for healthcare applications in partnership with Roche and Central Health.</li><li>Eliminated memory leaks (a 100% reduction) and optimized application reliability and user experience.</li></ul>
+              <div class="tag-row"><span class="tag">Android</span><span class="tag">Healthcare</span><span class="tag">Performance</span><span class="tag">Reliability</span></div>
+            </article>
+          </li>
+          <li class="role reveal">
+            <div class="role-rail"><time>Sep 2016 — Oct 2019</time><span>Damascus, Syria</span></div>
+            <article class="role-card card">
+              <div class="role-head"><div><p class="role-company"><a class="company-link" href="https://www.syriatel.sy/" target="_blank" rel="noreferrer">Syriatel Mobile Telecom <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></p><h3>Mobile Application Developer</h3></div></div>
+              <ul class="role-list"><li>Developed Syria’s first social and chat applications with voice and video calling.</li><li>Led a small engineering team to deliver enhanced versions of enterprise applications.</li></ul>
+              <div class="tag-row"><span class="tag">Mobile</span><span class="tag">XMPP</span><span class="tag">SIP</span><span class="tag">Voice &amp; Video</span><span class="tag">Team Leadership</span></div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div><p class="eyebrow"><span class="eyebrow-index">04</span>Key projects</p><h2 class="section-title" id="projects-title">Products with <em>real-world purpose.</em></h2></div>
+          <p class="section-intro">Eight named applications spanning retail and corporate banking, investment, arts and culture, AI-driven services, and encrypted communications.</p>
+        </header>
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects by sector" data-filter-target="projects">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All<span class="count">8</span></button>
+          <button class="filter-btn" type="button" data-filter="finance" aria-pressed="false">Banking &amp; investment<span class="count">4</span></button>
+          <button class="filter-btn" type="button" data-filter="culture" aria-pressed="false">Arts &amp; culture<span class="count">2</span></button>
+          <button class="filter-btn" type="button" data-filter="consumer" aria-pressed="false">Consumer &amp; communication<span class="count">2</span></button>
+        </div>
+        <p class="filter-status sr-only" role="status" aria-live="polite" data-filter-status="projects"></p>
+        <div class="projects-grid" data-filter-list="projects">
+          <article class="project-card card card-hover featured reveal" data-tags="finance" style="--pc:#6b9bff">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">FH</span><span class="project-sector">Retail banking · Featured</span></div>
+            <h3>FH Personal App</h3>
+            <p>Digital banking for card management, local and international transfers, bill payments, Aani instant payments, and Apple Wallet integration.</p>
+            <strong class="project-impact">Served thousands of active users across the UAE.</strong>
+            <div class="tag-row"><span class="tag">Card Management</span><span class="tag">Aani Payments</span><span class="tag">Bill Payments</span><span class="tag">Apple Wallet</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/search?q=FH%20Personal%20App&amp;c=apps&amp;hl=en" target="_blank" rel="noreferrer" aria-label="FH Personal App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/fh-personal/id1563416308" target="_blank" rel="noreferrer" aria-label="FH Personal App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="finance" style="--pc:#6b9bff">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">FB</span><span class="project-sector">Corporate banking</span></div>
+            <h3>FH Business App</h3>
+            <p>Corporate digital banking for UAE businesses, with multi-currency deposits, local and international transfers, WPS payroll, and role-based access.</p>
+            <div class="tag-row"><span class="tag">Multi-Currency Deposits</span><span class="tag">International Transfers</span><span class="tag">WPS Payroll</span><span class="tag">Role-Based Access</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.fh.financehousebusiness.android.app&amp;hl=en" target="_blank" rel="noreferrer" aria-label="FH Business App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/finance-house-business/id1538849624" target="_blank" rel="noreferrer" aria-label="FH Business App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="finance" style="--pc:#43d39e">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">IN</span><span class="project-sector">Investment</span></div>
+            <h3>investnation App</h3>
+            <p>Retail investment platform with Saver, Flex, and Growth portfolio options, licensed by ESCA under Finance House Group.</p>
+            <strong class="project-impact">Investing from AED 250 · Projected returns up to 7% annually.</strong>
+            <div class="tag-row"><span class="tag">Retail Investment</span><span class="tag">Saver · Flex · Growth</span><span class="tag">ESCA Licensed</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/search?q=investnation&amp;c=apps&amp;hl=en" target="_blank" rel="noreferrer" aria-label="investnation App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/investnation/id6465605280" target="_blank" rel="noreferrer" aria-label="investnation App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="finance" style="--pc:#6b9bff">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">DH</span><span class="project-sector">Digital banking</span></div>
+            <h3>Dhabi App</h3>
+            <p>Mobile-first banking for personal and business customers, supporting account opening, savings, fixed deposits, international transfers, and global payments.</p>
+            <div class="tag-row"><span class="tag">Account Opening</span><span class="tag">Savings &amp; Fixed Deposits</span><span class="tag">International Transfers</span><span class="tag">Global Payments</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.dhabi.digital&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Dhabi App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/dhabi/id6451184658" target="_blank" rel="noreferrer" aria-label="Dhabi App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="culture" style="--pc:#f0b44c">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">AD</span><span class="project-sector">Arts &amp; culture</span></div>
+            <h3>Abu Dhabi Art App</h3>
+            <p>Official DCT Abu Dhabi platform for exploring art fair highlights, artworks, exhibitions, and Abu Dhabi’s year-round visual arts program.</p>
+            <div class="tag-row"><span class="tag">Art Fair Highlights</span><span class="tag">Artworks &amp; Exhibitions</span><span class="tag">DCT Abu Dhabi</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/apps/details?id=ae.dctabudhabi.abudhabiart&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Abu Dhabi Art App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/abu-dhabi-art-fair/id1645033258" target="_blank" rel="noreferrer" aria-label="Abu Dhabi Art App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="culture" style="--pc:#f0b44c">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">AR</span><span class="project-sector">Arts &amp; culture</span></div>
+            <h3>Art Dubai Apps</h3>
+            <p>Official apps for the international art fair, giving visitors access to galleries, artworks, event schedules, interactive maps, and VIP program experiences.</p>
+            <div class="tag-row"><span class="tag">Galleries &amp; Artworks</span><span class="tag">Event Schedules</span><span class="tag">Interactive Maps</span><span class="tag">VIP Program</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.artdubai&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Art Dubai App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/au/app/art-dubai/id1553665984" target="_blank" rel="noreferrer" aria-label="Art Dubai App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="consumer" style="--pc:#a97bff">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">WC</span><span class="project-sector">AI-driven services</span></div>
+            <h3>WashCloud App</h3>
+            <p>AI-driven laundry platform featuring smart delivery tracking and digital customer experience capabilities.</p>
+            <div class="tag-row"><span class="tag">AI-Driven Platform</span><span class="tag">Smart Delivery Tracking</span><span class="tag">Digital Customer Experience</span></div>
+            <div class="project-links"><a class="store-link" href="https://play.google.com/store/apps/details?id=net.washcloud&amp;hl=en" target="_blank" rel="noreferrer" aria-label="WashCloud App on Google Play"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Google Play</a><a class="store-link" href="https://apps.apple.com/us/app/washcloud/id1614625033" target="_blank" rel="noreferrer" aria-label="WashCloud App on the App Store"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>App Store</a></div>
+          </article>
+          <article class="project-card card card-hover reveal" data-tags="consumer" style="--pc:#43d39e">
+            <div class="project-top"><span class="project-mark" aria-hidden="true">LK</span><span class="project-sector">Real-time communication</span></div>
+            <h3>Link App</h3>
+            <p>One of the first Syrian chat applications, providing encrypted messaging and real-time voice and video communication.</p>
+            <div class="tag-row"><span class="tag">Encrypted Messaging</span><span class="tag">Voice Calling</span><span class="tag">Video Calling</span><span class="tag">Real-Time Communication</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREDENTIALS ============ -->
+    <section class="section" id="credentials" aria-labelledby="credentials-title">
+      <div class="container">
+        <header class="section-head reveal"><div><p class="eyebrow"><span class="eyebrow-index">05</span>Education &amp; recognition</p><h2 class="section-title" id="credentials-title">Foundations and <em>earned recognition.</em></h2></div><p class="section-intro">Software engineering education, verified AI certificates, four Finance House recognitions, and language proficiency.</p></header>
+        <div class="credentials-grid">
+          <article class="credential-card education-card card reveal">
+            <div class="education-head"><span class="credential-label">Education</span><time class="education-year" datetime="2018"><span>Year</span><strong>2018</strong></time></div>
+            <div class="education-school"><h3>Damascus University</h3><p>Faculty of Information Technology</p></div>
+            <div class="education-degree"><span>Field of study</span><strong>Software Engineering</strong></div>
+          </article>
+          <article class="credential-card card reveal"><span class="credential-label">Awards</span><ul class="award-list"><li class="award"><span class="award-year">2025</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Development of the new investnation Credit Card</p></div></li><li class="award"><span class="award-year">2024</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Contribution to Oracle Cloud Infrastructure migration</p></div></li><li class="award"><span class="award-year">2023</span><div><h3>Certificate of Appreciation</h3><p>Finance House · Outstanding performance in digital delivery</p></div></li><li class="award"><span class="award-year">2023</span><div><h3>NPSS Project Completion Award</h3><p>Finance House</p></div></li></ul></article>
+        </div>
+        <section class="certificates card reveal" aria-labelledby="certificates-title">
+          <div class="certificates-heading">
+            <div><span class="credential-label">Professional learning</span><h3 id="certificates-title">Selected certificates</h3><p class="certificates-intro">This selection highlights my most important professional certificates. View the complete collection on LinkedIn.</p></div>
+            <a class="btn btn-ghost certificates-all" href="https://www.linkedin.com/in/yazan-alzaghloul/details/certifications/" target="_blank" rel="me noreferrer" data-social-profile="linkedin">View all on LinkedIn <svg class="i icon-out" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+          <div class="certificate-list">
+            <a class="certificate-link" href="https://www.linkedin.com/learning/certificates/6bc81bd73f29fee19c9df495cdd3cd81b585681410dd6b0318bf75e38366972f?u=86013394" target="_blank" rel="noreferrer" data-certificate-name="Claude 101 by Anthropic" data-certificate-issuer="Anthropic">
+              <span class="certificate-mark" aria-hidden="true">AI</span>
+              <div class="certificate-copy"><span class="certificate-provider">Anthropic</span><h4>Claude 101 by Anthropic</h4><p class="certificate-skills">Artificial Intelligence (AI), Anthropic Claude, and AI literacy.</p><span class="certificate-action">View certificate <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></div>
+            </a>
+            <a class="certificate-link" href="https://www.linkedin.com/learning/certificates/7e4a9269d451a7e90ac275330ee86e6c324ac28a0868662d33d1ffef9db2ea98?u=86013394" target="_blank" rel="noreferrer" data-certificate-name="AI Fluency: Framework and Foundations by Anthropic" data-certificate-issuer="Anthropic">
+              <span class="certificate-mark" aria-hidden="true">AI</span>
+              <div class="certificate-copy"><span class="certificate-provider">Anthropic</span><h4>AI Fluency: Framework and Foundations</h4><p class="certificate-skills">Artificial intelligence (AI) and AI Fluency.</p><span class="certificate-action">View certificate <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></div>
+            </a>
+          </div>
+        </section>
+        <div class="languages" aria-label="Languages">
+          <article class="language card reveal"><h3>Arabic</h3><span>Native</span></article>
+          <article class="language card reveal"><h3>English</h3><span>Professional working proficiency</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <header class="section-head reveal"><div><p class="eyebrow">Contact</p><h2 class="section-title" id="contact-title">Let’s connect<br>the right systems.</h2></div><p class="section-intro">For conversations about mobile architecture, digital banking, AI-assisted engineering, and secure enterprise delivery.</p></header>
+        <header class="section-head reveal"><div><p class="eyebrow"><span class="eyebrow-index">06</span>Contact</p><h2 class="section-title" id="contact-title">Let’s lead your next <em>digital transformation.</em></h2></div><p class="section-intro">Open to Engineering Management and technology leadership roles in the UAE: building high-performing teams, setting engineering direction, and turning transformation strategy into secure, reliable delivery.</p></header>
         <div class="contact-wrap">
-          <address class="contact-list glass reveal slide-left">
-            <a class="contact-item interactive" href="mailto:yazan.alzaghloul@gmail.com"><span class="contact-icon" aria-hidden="true">&#x2709;&#xFE0E;</span><span><small>Email</small><strong>yazan.alzaghloul@gmail.com</strong></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
-            <a class="contact-item interactive" href="tel:+971521206549"><span class="contact-icon" aria-hidden="true">&#x260E;&#xFE0E;</span><span><small>Phone</small><strong>+971 52 120 6549</strong></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
-            <div class="contact-item"><span class="contact-icon" aria-hidden="true">⌖</span><span><small>Location</small><strong>Abu Dhabi, UAE</strong></span></div>
-            <a class="contact-item interactive" href="https://www.linkedin.com/in/yazan-alzaghloul" target="_blank" rel="me noreferrer" data-social-profile="linkedin"><span class="contact-icon" aria-hidden="true">in</span><span><small>LinkedIn</small><strong>yazan-alzaghloul</strong></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+          <div class="contact-cta card reveal">
+            <div>
+              <h3>Leading change in a regulated business?</h3>
+              <p>I bring engineering leadership that stays close to the code: aligning technology with business and regulatory goals, and giving teams the standards and tools to deliver.</p>
+              <ul class="contact-proof">
+                <li><strong>People leadership</strong><span>Cross-functional mobile and backend teams, mentorship, and engineering governance.</span></li>
+                <li><strong>Delivery at scale</strong><span>Architecture and delivery for five retail and corporate digital banking apps.</span></li>
+                <li><strong>Modernization</strong><span>A multi-agent AI-Powered Development Lifecycle and contribution to an Oracle Cloud Infrastructure migration.</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="contact-actions">
+                <a class="btn btn-primary" href="mailto:yazan.alzaghloul@gmail.com" data-availability-cta="contact"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Start a conversation</a>
+                <button class="btn btn-ghost copy-email" type="button" data-copy="yazan.alzaghloul@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button>
+              </div>
+              <p class="contact-status" style="margin-top:1.25rem"><span class="status-dot" aria-hidden="true"></span>Abu Dhabi, UAE · GMT+4</p>
+            </div>
+          </div>
+          <address class="contact-list card reveal">
+            <a class="contact-item" href="mailto:yazan.alzaghloul@gmail.com"><span class="contact-icon" aria-hidden="true"><svg class="i"><use href="#i-mail"/></svg></span><span><small>Email</small><strong>yazan.alzaghloul@gmail.com</strong></span><svg class="i contact-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="contact-item" href="tel:+971521206549"><span class="contact-icon" aria-hidden="true"><svg class="i"><use href="#i-phone"/></svg></span><span><small>Phone</small><strong>+971 52 120 6549</strong></span><svg class="i contact-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="contact-item" href="https://www.linkedin.com/in/yazan-alzaghloul" target="_blank" rel="me noreferrer" data-social-profile="linkedin"><span class="contact-icon" aria-hidden="true"><svg class="i"><use href="#i-linkedin"/></svg></span><span><small>LinkedIn</small><strong>yazan-alzaghloul</strong></span><svg class="i contact-arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+            <div class="contact-item"><span class="contact-icon" aria-hidden="true"><svg class="i"><use href="#i-pin"/></svg></span><span><small>Location</small><strong>Abu Dhabi, UAE</strong></span></div>
           </address>
-          <div class="contact-visual glass reveal slide-right" aria-hidden="true"><span class="ripple"></span><span class="ripple"></span><span class="ripple"></span><div class="contact-monogram">YA</div><p class="contact-cta">Build secure, scalable digital experiences.</p></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="container footer-inner"><p>Yazan Alzaghloul · Engineering Manager &amp; Mobile Architect</p><a class="back-top interactive" href="#home">Back to top ↑</a></div></footer>
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="logo-mark" aria-hidden="true">YA</span><div><strong>Yazan Alzaghloul</strong><span>Engineering Manager &amp; Mobile Architect</span></div></div>
+      <ul class="footer-links" aria-label="Footer">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="https://www.linkedin.com/in/yazan-alzaghloul" target="_blank" rel="me noreferrer" data-social-profile="linkedin">LinkedIn</a></li>
+        <li><a class="back-top" href="#home">Back to top <svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
 
-  <script>
-    /* Shared preferences */
-    (() => {
-      'use strict';
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
-      const root = document.documentElement;
-      const trackEvent = (eventName, parameters = {}) => {
-        if (typeof window.gtag === 'function') window.gtag('event', eventName, parameters);
-      };
-
-      /* Theme preference */
-      const themeButton = document.querySelector('.theme-toggle');
-      const themeColorMeta = document.querySelector('#theme-color-meta');
-      const applyTheme = (theme, persist = false) => {
-        const nextTheme = theme === 'light' ? 'light' : 'dark';
-        root.dataset.theme = nextTheme;
-        themeButton.setAttribute('aria-pressed', String(nextTheme === 'light'));
-        themeButton.setAttribute('aria-label', `Switch to ${nextTheme === 'light' ? 'dark' : 'light'} theme`);
-        themeColorMeta.setAttribute('content', nextTheme === 'light' ? '#f4f7fb' : '#07101c');
-        if (persist) {
-          try { localStorage.setItem('portfolio-theme', nextTheme); } catch { /* Storage may be unavailable. */ }
-        }
-      };
-      applyTheme(root.dataset.theme || 'dark');
-      themeButton.addEventListener('click', () => {
-        const nextTheme = root.dataset.theme === 'light' ? 'dark' : 'light';
-        applyTheme(nextTheme, true);
-        trackEvent('theme_change', { theme: nextTheme });
-      });
-      systemTheme.addEventListener?.('change', event => {
-        try {
-          if (!localStorage.getItem('portfolio-theme')) applyTheme(event.matches ? 'light' : 'dark');
-        } catch { applyTheme(event.matches ? 'light' : 'dark'); }
-      });
-
-      /* Mobile navigation */
-      const menuButton = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const closeMenu = () => {
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Open navigation menu');
-        navLinks.classList.remove('is-open');
-      };
-      menuButton.addEventListener('click', () => {
-        const open = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', String(!open));
-        menuButton.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
-        navLinks.classList.toggle('is-open', !open);
-      });
-      navLinks.addEventListener('click', event => { if (event.target.matches('a')) closeMenu(); });
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); }
-      });
-      document.addEventListener('click', event => { if (!event.target.closest('.nav') && navLinks.classList.contains('is-open')) closeMenu(); });
-
-      /* Intersection observers */
-      const revealItems = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window && !reducedMotion.matches) {
-        const revealObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: .12, rootMargin: '0px 0px -5% 0px' });
-        revealItems.forEach((item, index) => {
-          item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
-          revealObserver.observe(item);
-        });
-      } else revealItems.forEach(item => item.classList.add('is-visible'));
-
-      /* Active section tracking */
-      const sections = [...document.querySelectorAll('main section[id]')];
-      const navigationLinks = [...document.querySelectorAll('.nav-link')];
-      const setActive = id => navigationLinks.forEach(link => {
-        const active = link.getAttribute('href') === `#${id}`;
-        link.classList.toggle('active', active);
-        if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
-      });
-      if ('IntersectionObserver' in window) {
-        const sectionObserver = new IntersectionObserver(entries => {
-          const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-          if (visible) setActive(visible.target.id);
-        }, { rootMargin: '-32% 0px -55% 0px', threshold: [0, .15, .4] });
-        sections.forEach(section => sectionObserver.observe(section));
-      }
-
-      /* Privacy-safe Google Analytics events */
-      if ('IntersectionObserver' in window) {
-        const viewedSections = new Set();
-        const analyticsSectionObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            const sectionId = entry.target.id;
-            if (entry.isIntersecting && !viewedSections.has(sectionId)) {
-              viewedSections.add(sectionId);
-              trackEvent('section_view', { section_id: sectionId });
-              analyticsSectionObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: .5 });
-        sections.forEach(section => analyticsSectionObserver.observe(section));
-      }
-
-      document.addEventListener('click', event => {
-        const clickedElement = event.target instanceof Element ? event.target : event.target.parentElement;
-        const availabilityCta = clickedElement?.closest('[data-availability-cta]');
-        if (availabilityCta) {
-          trackEvent('availability_cta_click', { placement: availabilityCta.dataset.availabilityCta });
-        }
-
-        const link = clickedElement?.closest('a[href]');
-        if (!link) return;
-
-        const href = link.getAttribute('href') || '';
-        if (link.matches('.nav-cv, .cv-download')) {
-          trackEvent('cv_download', {
-            placement: link.matches('.nav-cv') ? 'navigation' : 'hero'
-          });
-          return;
-        }
-
-        if (href.startsWith('mailto:')) {
-          trackEvent('contact_click', { contact_method: 'email' });
-          return;
-        }
-
-        if (href.startsWith('tel:')) {
-          trackEvent('contact_click', { contact_method: 'phone' });
-          return;
-        }
-
-        if (link.dataset.socialProfile) {
-          trackEvent('social_profile_click', { network: link.dataset.socialProfile });
-          if (link.closest('.contact-list') && href.includes('linkedin.com')) {
-            trackEvent('contact_click', { contact_method: 'linkedin' });
-          }
-          return;
-        }
-
-        if (link.dataset.certificateName) {
-          trackEvent('certificate_click', {
-            certificate_name: link.dataset.certificateName,
-            issuer: link.dataset.certificateIssuer || 'unknown'
-          });
-          return;
-        }
-
-        const projectCard = link.closest('.project-card');
-        if (projectCard) {
-          trackEvent('project_link_click', {
-            project_name: projectCard.querySelector('h3')?.textContent.trim() || 'unknown',
-            platform: link.textContent.trim().toLowerCase()
-          });
-          return;
-        }
-
-        if (href.startsWith('#')) {
-          const placement = link.matches('.nav-link') ? 'navigation'
-            : link.matches('.hero-contact') ? 'hero'
-              : link.matches('.back-top') ? 'footer'
-                : link.matches('.logo') ? 'logo'
-                  : 'page';
-          trackEvent('navigation_click', {
-            destination: href.slice(1) || 'home',
-            placement
-          });
-        }
-      });
-
-      /* Scroll depth via viewport observation, without a per-frame scroll handler */
-      if ('IntersectionObserver' in window) {
-        const scrollMarkers = [25, 50, 75, 100].map(percent => {
-          const marker = document.createElement('span');
-          marker.setAttribute('aria-hidden', 'true');
-          marker.dataset.scrollDepth = String(percent);
-          marker.style.position = 'absolute';
-          marker.style.width = '1px';
-          marker.style.height = '1px';
-          marker.style.pointerEvents = 'none';
-          marker.style.opacity = '0';
-          document.body.appendChild(marker);
-          return marker;
-        });
-        const positionScrollMarkers = () => {
-          const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-          scrollMarkers.forEach(marker => {
-            const percent = Number(marker.dataset.scrollDepth);
-            marker.style.top = `${(maxScroll * percent / 100) + (window.innerHeight / 2)}px`;
-          });
-        };
-        const observedDepths = new Set();
-        const scrollDepthObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const percent = Number(entry.target.dataset.scrollDepth);
-            if (observedDepths.has(percent)) return;
-            observedDepths.add(percent);
-            trackEvent('scroll_depth', { percent_scrolled: percent });
-            scrollDepthObserver.unobserve(entry.target);
-          });
-        }, { threshold: 0 });
-        scrollMarkers.forEach(marker => scrollDepthObserver.observe(marker));
-        positionScrollMarkers();
-        if ('ResizeObserver' in window) new ResizeObserver(positionScrollMarkers).observe(document.body);
-        window.addEventListener('resize', positionScrollMarkers, { passive: true });
-      }
-
-      /* A small, bounded portrait response. No work runs while the pointer is idle. */
-      const portrait = document.querySelector('.hero-portrait');
-      const portraitDepth = portrait?.querySelector('.portrait-depth');
-      if (portraitDepth) {
-        let portraitFrame = 0;
-        let targetX = 0, targetY = 0;
-        const resetPortrait = () => {
-          cancelAnimationFrame(portraitFrame); portraitFrame = 0;
-          portraitDepth.style.transform = '';
-        };
-        portrait.addEventListener('pointermove', event => {
-          if (!finePointer.matches || reducedMotion.matches || event.pointerType !== 'mouse') return;
-          const bounds = portrait.getBoundingClientRect();
-          targetX = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1));
-          targetY = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1));
-          if (!portraitFrame) portraitFrame = requestAnimationFrame(() => {
-            portraitDepth.style.transform = `perspective(1000px) translate3d(${targetX * 4}px, ${targetY * 4}px, 0) rotateX(${-targetY * 2}deg) rotateY(${targetX * 2}deg)`;
-            portraitFrame = 0;
-          });
-        });
-        portrait.addEventListener('pointerleave', resetPortrait);
-        portrait.addEventListener('pointercancel', resetPortrait);
-        reducedMotion.addEventListener('change', resetPortrait);
-        finePointer.addEventListener('change', resetPortrait);
-        window.addEventListener('pagehide', resetPortrait);
-      }
-
-      /* Cursor behavior */
-      const cursorDot = document.querySelector('.cursor-dot');
-      const cursorRing = document.querySelector('.cursor-ring');
-      if (finePointer.matches && !reducedMotion.matches) {
-        let mouseX = -100, mouseY = -100, ringX = -100, ringY = -100, cursorFrame = 0;
-        const animateRing = () => {
-          ringX += (mouseX - ringX) * .16; ringY += (mouseY - ringY) * .16;
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
-          if (Math.abs(mouseX - ringX) > .1 || Math.abs(mouseY - ringY) > .1) {
-            cursorFrame = requestAnimationFrame(animateRing);
-          } else cursorFrame = 0;
-        };
-        document.addEventListener('pointermove', event => {
-          mouseX = event.clientX; mouseY = event.clientY;
-          cursorDot.style.opacity = '1'; cursorRing.style.opacity = '1';
-          cursorDot.style.transform = `translate3d(${mouseX - 3.5}px, ${mouseY - 3.5}px, 0)`;
-          if (!cursorFrame) cursorFrame = requestAnimationFrame(animateRing);
-        });
-        document.querySelectorAll('a, button, .chip, .project-card').forEach(item => {
-          item.addEventListener('pointerenter', () => cursorRing.classList.add('is-hovering'));
-          item.addEventListener('pointerleave', () => cursorRing.classList.remove('is-hovering'));
-        });
-      }
-
-      /* Canvas particle system */
-      const canvas = document.getElementById('particle-canvas');
-      const ctx = canvas.getContext('2d', { alpha: true });
-      const colors = ['#5b7cfa', '#2e9bff', '#28c7b7', '#e6b566'];
-      const saveData = Boolean(navigator.connection?.saveData);
-      let particles = [], frame = 0, width = 0, height = 0, dpr = 1, running = !document.hidden;
-      const resizeCanvas = () => {
-        width = window.innerWidth; height = window.innerHeight;
-        dpr = Math.min(window.devicePixelRatio || 1, finePointer.matches ? 1.5 : 1.25);
-        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-        canvas.style.width = `${width}px`; canvas.style.height = `${height}px`;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const particleCap = finePointer.matches ? 56 : 32;
-        const count = reducedMotion.matches || saveData ? 0 : Math.min(particleCap, Math.max(18, Math.round((width * height) / 30000)));
-        particles = Array.from({ length: count }, (_, index) => particles[index] || ({
-          x: Math.random() * width, y: Math.random() * height,
-          vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
-          radius: Math.random() * 1.5 + .7, color: colors[Math.floor(Math.random() * colors.length)]
-        }));
-      };
-      const drawParticles = () => {
-        if (!running || reducedMotion.matches || saveData) return;
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach((particle, i) => {
-          particle.x += particle.vx; particle.y += particle.vy;
-          if (particle.x < -10) particle.x = width + 10; if (particle.x > width + 10) particle.x = -10;
-          if (particle.y < -10) particle.y = height + 10; if (particle.y > height + 10) particle.y = -10;
-          ctx.beginPath(); ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-          ctx.fillStyle = particle.color; ctx.globalAlpha = .62; ctx.fill();
-          for (let j = i + 1; j < particles.length; j++) {
-            const other = particles[j], dx = particle.x - other.x, dy = particle.y - other.y, distance = Math.hypot(dx, dy);
-            if (distance < 115) {
-              ctx.beginPath(); ctx.moveTo(particle.x, particle.y); ctx.lineTo(other.x, other.y);
-              ctx.strokeStyle = particle.color; ctx.globalAlpha = (1 - distance / 115) * .12; ctx.lineWidth = .6; ctx.stroke();
-            }
-          }
-        });
-        ctx.globalAlpha = 1;
-        frame = requestAnimationFrame(drawParticles);
-      };
-      resizeCanvas();
-      if (!reducedMotion.matches && !saveData) drawParticles();
-      window.addEventListener('resize', resizeCanvas, { passive: true });
-      document.addEventListener('visibilitychange', () => {
-        running = !document.hidden;
-        cancelAnimationFrame(frame);
-        if (running && !saveData) drawParticles();
-      });
-      reducedMotion.addEventListener?.('change', event => {
-        if (event.matches) { cancelAnimationFrame(frame); ctx.clearRect(0, 0, width, height); }
-        else if (!saveData) { resizeCanvas(); running = !document.hidden; drawParticles(); }
-      });
-    })();
-  </script>
+  <div class="toast" role="status" aria-live="polite"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span></span></div>
 </body>
 </html>
