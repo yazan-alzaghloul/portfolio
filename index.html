@@ -125,7 +125,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=6">
+  <link rel="stylesheet" href="assets/css/site.css?v=8">
   <link rel="stylesheet" href="assets/assistant/assistant.css?v=4">
   <script src="assets/js/site.js?v=2" defer></script>
   <script type="module" src="assets/assistant/widget.mjs?v=6"></script>
@@ -212,14 +212,17 @@
         </div>
 
         <figure class="hero-portrait hero-enter" style="--i:3">
-          <span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
           <div class="portrait-frame">
+            <div class="portrait-panel" aria-hidden="true">
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            </div>
             <picture class="portrait-image">
-              <source type="image/webp" srcset="assets/yazan-hero-enhanced-480.webp 480w, assets/yazan-hero-enhanced-960.webp 960w, assets/yazan-hero-enhanced-1440.webp 1440w" sizes="(max-width: 820px) min(380px, 90vw), 460px">
-              <img src="assets/yazan-hero-enhanced-fallback.jpg" width="960" height="970" alt="Portrait of Yazan Alzaghloul in a dark suit and tie" fetchpriority="high" decoding="async">
+              <source type="image/avif" srcset="assets/yazan-cutout-480.avif 480w, assets/yazan-cutout-960.avif 960w, assets/yazan-cutout-1440.avif 1440w" sizes="(max-width: 820px) min(480px, 112vw), 580px">
+              <source type="image/webp" srcset="assets/yazan-hero-640.webp 640w" sizes="(max-width: 820px) min(480px, 112vw), 580px">
+              <img src="assets/yazan-cutout-960.png" width="960" height="969" alt="Portrait of Yazan Alzaghloul in a dark suit and tie" fetchpriority="high" decoding="async">
             </picture>
-            <figcaption class="portrait-caption" aria-hidden="true"><span>FIG. 01 — Y. ALZAGHLOUL</span><span>ABU DHABI, UAE</span></figcaption>
           </div>
+          <figcaption class="portrait-caption" aria-hidden="true">FIG. 01 — Y. ALZAGHLOUL · ABU DHABI, UAE</figcaption>
           <div class="float-badge one" aria-hidden="true"><span class="badge-icon"><svg class="i"><use href="#i-card"/></svg></span><div><strong>5 banking apps</strong><span>Retail &amp; corporate</span></div></div>
           <div class="float-badge two" aria-hidden="true"><span class="badge-icon"><svg class="i"><use href="#i-users"/></svg></span><div><strong>Leading teams</strong><span>Since 2022</span></div></div>
         </figure>
