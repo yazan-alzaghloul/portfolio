@@ -546,28 +546,25 @@ a.marquee-item:hover { color: var(--text); }
 .language span { padding: .25rem .6rem; border-radius: 7px; background: var(--accent-soft); color: var(--accent); font: 500 .74rem/1.3 var(--font-mono); text-align: right; }
 
 /* ---------- 12. Contact ---------- */
-.contact-wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 1rem; }
-.contact-cta { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 2.5rem; overflow: hidden; padding: clamp(1.75rem, 4vw, 3rem);
+.contact-wrap { display: grid; gap: 1rem; }
+.contact-cta { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) max-content; align-items: end; gap: 2rem 4rem; overflow: hidden; padding: clamp(1.75rem, 4.5vw, 3.5rem);
   background: radial-gradient(500px 300px at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%), var(--surface); }
 .contact-cta::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 32px 32px; mask-image: radial-gradient(circle at 100% 0%, #000, transparent 70%);
 }
-.contact-cta h3 { max-width: 18ch; font-size: clamp(1.8rem, 3.6vw, 2.7rem); letter-spacing: -.045em; line-height: 1.05; }
-.contact-cta p { max-width: 48ch; margin-top: 1rem; color: var(--muted); font-size: 1.02rem; }
+.contact-cta h3 { max-width: 20ch; font-size: clamp(2rem, 4.2vw, 3.2rem); letter-spacing: -.045em; line-height: 1.05; }
+.contact-cta p { max-width: 54ch; margin-top: 1.1rem; color: var(--muted); font-size: 1.08rem; }
+.contact-cta-side { display: grid; justify-items: end; }
+.contact-cta-side .contact-actions { justify-content: flex-end; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
-.contact-proof { display: grid; gap: .1rem; margin-top: 1.75rem; list-style: none; border-top: 1px solid var(--line); }
-.contact-proof li { display: grid; grid-template-columns: minmax(130px, .38fr) 1fr; gap: .25rem 1.25rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
-.contact-proof strong { position: relative; padding-left: 1rem; font-size: .9rem; font-weight: 600; }
-.contact-proof strong::before { content: ""; position: absolute; left: 0; top: .5em; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); }
-.contact-proof span { color: var(--muted); font-size: .9rem; line-height: 1.5; }
-@media (max-width: 640px) { .contact-proof li { grid-template-columns: 1fr; } }
 .contact-status { display: flex; align-items: center; gap: .6rem; color: var(--muted); font: 400 .8rem/1.4 var(--font-mono); }
-.contact-list { padding: .5rem clamp(1.25rem, 3vw, 1.75rem); }
-.contact-item { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: .9rem; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--line); transition: transform .3s var(--ease-out); }
-.contact-item:last-child { border-bottom: 0; }
-a.contact-item:hover { transform: translateX(4px); }
+.contact-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.contact-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "icon arrow" "text text"; gap: 1.75rem .75rem; align-items: start; padding: 1.35rem; }
+.contact-item .contact-icon { grid-area: icon; }
+.contact-item > span:not(.contact-icon) { grid-area: text; min-width: 0; }
+.contact-item .contact-arrow { grid-area: arrow; }
 .contact-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 11px; background: var(--surface-2); color: var(--accent); transition: border-color .2s ease, background-color .2s ease; }
 .contact-icon svg { width: 19px; height: 19px; }
 a.contact-item:hover .contact-icon { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: var(--accent-soft); }
@@ -627,7 +624,8 @@ footer { padding: 3rem 0 3.25rem; border-top: 1px solid var(--line); color: var(
 }
 @media (max-width: 1000px) {
   .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
-  .about-grid, .contact-wrap, .credentials-grid { grid-template-columns: 1fr; }
+  .about-grid, .credentials-grid { grid-template-columns: 1fr; }
+  .contact-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .skill-groups, .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .skill-group.wide { grid-column: auto; }
 }
@@ -649,6 +647,9 @@ footer { padding: 3rem 0 3.25rem; border-top: 1px solid var(--line); color: var(
   .role-rail::after { top: 5px; left: -28px; right: auto; }
   .role-card { margin-left: 0; }
   .certificate-list { grid-template-columns: 1fr; }
+  .contact-cta { grid-template-columns: 1fr; align-items: start; }
+  .contact-cta-side { justify-items: start; }
+  .contact-cta-side .contact-actions { justify-content: flex-start; }
 }
 @media (max-width: 640px) {
   :root { --nav-h: 64px; }
@@ -665,8 +666,8 @@ footer { padding: 3rem 0 3.25rem; border-top: 1px solid var(--line); color: var(
   .strengths, .skill-groups, .projects-grid, .languages { grid-template-columns: 1fr; }
   .project-card.featured { grid-column: auto; }
   .career-arc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .contact-item { grid-template-columns: 42px minmax(0, 1fr); }
-  .contact-arrow { display: none; }
+  .contact-list { grid-template-columns: 1fr; }
+  .contact-item { grid-template-columns: 42px minmax(0, 1fr) auto; grid-template-areas: "icon text arrow"; gap: .9rem; align-items: center; padding: 1rem 1.1rem; }
   .contact-actions .btn { flex: 1 1 auto; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
