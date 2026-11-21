@@ -1,5 +1,5 @@
 import { config, welcome, suggestions } from './config.mjs?v=2';
-import { askAssistant, safeSources } from './service.mjs?v=2';
+import { askAssistant, safeSources } from './service.mjs?v=3';
 
 const icons = {
   robot: '<rect x="3" y="8.5" width="15" height="12" rx="4"/><path d="M10.5 8.5V5.5"/><circle cx="10.5" cy="4.25" r="1.25"/><path d="M1.5 13v3.5M19.5 13v3.5"/><path d="M8 13.5v1.25M13 13.5v1.25"/><path d="M8.5 17.5h4"/><path d="M20 1.25l.8 1.95 1.95.8-1.95.8-.8 1.95-.8-1.95-1.95-.8 1.95-.8z" fill="currentColor" stroke="none"/>',

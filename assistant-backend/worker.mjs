@@ -32,6 +32,39 @@ export function validateMessages(data) {
   return messages.at(-1).role === 'user' ? messages : null;
 }
 
+// Hard daily ceiling on paid provider calls. Rate-limit bindings are per-location and
+// eventually consistent, and Origin can be spoofed, so they cannot bound total spend.
+// A single named Durable Object serialises its storage operations, giving one exact
+// global counter that resets at 00:00 UTC.
+export const DEFAULT_DAILY_LIMIT = 500;
+export const dailyLimit = env => {
+  const value = Number(env.DAILY_REQUEST_LIMIT ?? DEFAULT_DAILY_LIMIT);
+  return Number.isInteger(value) && value > 0 ? value : null;
+};
+const secondsUntilUtcMidnight = (now = new Date()) =>
+  Math.max(60, Math.ceil((Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) - now.getTime()) / 1000));
+
+export class DailyBudget {
+  constructor(state) { this.state = state; }
+  async fetch(request) {
+    const { limit } = await request.json();
+    const day = new Date().toISOString().slice(0, 10);
+    const stored = await this.state.storage.get('usage');
+    const usage = stored?.day === day ? stored : { day, count: 0 };
+    if (!Number.isInteger(limit) || limit < 1 || usage.count >= limit) return Response.json({ allowed: false });
+    usage.count += 1;
+    await this.state.storage.put('usage', usage);
+    return Response.json({ allowed: true });
+  }
+}
+
+async function consumeDailyBudget(env, limit) {
+  const stub = env.DAILY_BUDGET.get(env.DAILY_BUDGET.idFromName('portfolio-chat'));
+  const response = await stub.fetch('https://daily-budget/consume', { method: 'POST', body: JSON.stringify({ limit }) });
+  if (!response.ok) throw new Error('budget-unavailable');
+  return (await response.json()).allowed === true;
+}
+
 async function readBody(request) {
   if (Number(request.headers.get('Content-Length')) > BODY_LIMIT) throw new Error('too-large');
   if (!request.body) throw new Error('invalid');
@@ -69,7 +102,8 @@ export default {
     if (request.method !== 'POST') return json({ error: 'Use POST.' }, 405, { Allow: 'POST, OPTIONS' });
     if (!(request.headers.get('Content-Type') || '').toLowerCase().startsWith('application/json')) return json({ error: 'JSON required.' }, 415);
     // Fail closed if credentials or platform rate-limit bindings are missing.
-    if (!env.OPENAI_API_KEY || !env.OPENAI_MODEL || !env.CHAT_RATE_LIMITER || !env.GLOBAL_RATE_LIMITER) return json({ error: 'AI service unavailable.' }, 503);
+    const limit = dailyLimit(env);
+    if (!env.OPENAI_API_KEY || !env.OPENAI_MODEL || !env.CHAT_RATE_LIMITER || !env.GLOBAL_RATE_LIMITER || !env.DAILY_BUDGET || !limit) return json({ error: 'AI service unavailable.' }, 503);
     try {
       const ip = request.headers.get('CF-Connecting-IP');
       if (!ip) return json({ error: 'AI service unavailable.' }, 503);
@@ -81,6 +115,8 @@ export default {
       try { data = await readBody(request); } catch (error) { return json({ error: error.message === 'too-large' ? 'Request too large.' : 'Invalid JSON.' }, error.message === 'too-large' ? 413 : 400); }
       const messages = validateMessages(data);
       if (!messages) return json({ error: 'Invalid conversation.' }, 400);
+      // Counted only for valid requests that would reach the paid provider.
+      if (!(await consumeDailyBudget(env, limit))) return json({ error: 'Please try again tomorrow.' }, 429, { 'Retry-After': String(secondsUntilUtcMidnight()) });
       const latest = messages.at(-1).content;
       // Retrieval is owned by the server. Client-provided knowledge/system roles are never accepted.
       const ranked = retrieve(latest, messages.slice(0, -1), 8);

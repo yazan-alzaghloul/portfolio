@@ -7,6 +7,16 @@ workers_dev = true
 ALLOWED_ORIGINS = "https://yazan-alzaghloul.github.io,http://localhost:4173"
 # Set to a Responses API model available in your OpenAI project before deployment.
 OPENAI_MODEL = "gpt-6-luna"
+# Hard global ceiling on paid provider calls per UTC day (enforced by the DailyBudget Durable Object).
+DAILY_REQUEST_LIMIT = "500"
+
+[[durable_objects.bindings]]
+name = "DAILY_BUDGET"
+class_name = "DailyBudget"
+
+[[migrations]]
+tag = "v1-daily-budget"
+new_sqlite_classes = ["DailyBudget"]
 
 [[ratelimits]]
 name = "CHAT_RATE_LIMITER"

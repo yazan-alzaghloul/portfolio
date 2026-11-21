@@ -259,7 +259,6 @@
       return;
     }
     if (href.startsWith('mailto:')) { trackEvent('contact_click', { contact_method: 'email' }); return; }
-    if (href.startsWith('tel:')) { trackEvent('contact_click', { contact_method: 'phone' }); return; }
     if (link.dataset.socialProfile) {
       trackEvent('social_profile_click', { network: link.dataset.socialProfile });
       if (link.closest('.contact-list') && href.includes('linkedin.com')) trackEvent('contact_click', { contact_method: 'linkedin' });
