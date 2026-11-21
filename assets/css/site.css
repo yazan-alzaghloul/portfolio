@@ -576,7 +576,7 @@ a.marquee-item:hover { color: var(--text); }
 .contact-cta-side .contact-actions { justify-content: flex-end; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 .contact-status { display: flex; align-items: center; gap: .6rem; color: var(--muted); font: 400 .8rem/1.4 var(--font-mono); }
-.contact-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.contact-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .contact-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "icon arrow" "text text"; gap: 1.75rem .75rem; align-items: start; padding: 1.35rem; }
 .contact-item .contact-icon { grid-area: icon; }
 .contact-item > span:not(.contact-icon) { grid-area: text; min-width: 0; }
@@ -642,6 +642,7 @@ footer { padding: 3rem 0 3.25rem; border-top: 1px solid var(--line); color: var(
   .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); }
   .about-grid, .credentials-grid { grid-template-columns: 1fr; }
   .contact-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-list > :first-child { grid-column: 1 / -1; }
   .skill-groups, .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .skill-group.wide { grid-column: auto; }
 }
