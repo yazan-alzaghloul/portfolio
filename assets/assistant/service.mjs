@@ -9,6 +9,25 @@ export function safeSources(sources) {
     .slice(0, 3).map(s => ({ title: s.title.slice(0, 100), url: s.url }));
 }
 
+// The backend requires strict user/assistant alternation ending in an assistant turn.
+// History can break that: a request aborted on page exit leaves an unanswered user turn
+// in session storage. Collapse same-role runs (keeping the latest) and drop a trailing
+// user turn so one interrupted request can't send the rest of the session to fallback.
+export function toTranscript(history) {
+  const turns = [];
+  for (const m of history) {
+    if (!m || !['user', 'assistant'].includes(m.role) || m.welcome || typeof m.content !== 'string') continue;
+    const content = m.content.trim().slice(0, m.role === 'user' ? 1000 : 4000);
+    if (!content) continue;
+    if (turns.at(-1)?.role === m.role) turns[turns.length - 1] = { role: m.role, content };
+    else turns.push({ role: m.role, content });
+  }
+  const messages = turns.slice(-10);
+  while (messages.length && messages[0].role !== 'user') messages.shift();
+  if (messages.at(-1)?.role === 'user') messages.pop();
+  return messages;
+}
+
 export async function askAssistant(question, history, { signal, settings = config, fetcher = fetch } = {}) {
   if (!settings.endpoint) return localAnswer(question, history);
   const controller = new AbortController();
@@ -19,10 +38,7 @@ export async function askAssistant(question, history, { signal, settings = confi
   try {
     const endpoint = new URL(settings.endpoint);
     if (endpoint.protocol !== 'https:' && !(endpoint.protocol === 'http:' && ['localhost', '127.0.0.1'].includes(endpoint.hostname))) throw new Error('Invalid endpoint');
-    // Drop the welcome and keep a bounded, alternating user/assistant transcript.
-    let messages = history.filter(m => ['user', 'assistant'].includes(m.role) && !m.welcome)
-      .map(m => ({ role: m.role, content: m.content.slice(0, m.role === 'user' ? 1000 : 4000) })).slice(-10);
-    while (messages.length && messages[0].role !== 'user') messages.shift();
+    let messages = toTranscript(history);
     messages.push({ role: 'user', content: question });
     while (JSON.stringify(messages).length > 12000 && messages.length > 1) messages.splice(0, 2);
     const response = await fetcher(endpoint.href, {
